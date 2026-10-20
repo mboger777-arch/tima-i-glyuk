@@ -5,7 +5,7 @@ const Z4T=[{k:'t_song',goal:'Спеть песенку и послушать',i:
 const Z4IN=['keyboard','mic','webcam'],Z4OUT=['monitor','speakers','printer'];
 function z4geo(){const P=lineup(16);const x0=P.x0,x1=P.x1;const cx=(x0+x1)/2;const[px,py]=bgXY(640,300);
  return{x0,x1,cx,sin:{x:x0+130,y:430},sout:{x:x1-130,y:430},ty:gY()-60,px,py:Math.min(py,330)}}
-SC.z4=Object.assign({},DRAGSC,{enter(){cast=[hero('tima',0,{side:'L'}),hero('bit',0,{side:'R'})];const z=zoneStart(4,{ph:0,i:-1,cur:null,pile:{in:[],out:[]},task:-1,si:null,so:null,run:null});
+SC.z4=Object.assign({},DRAGSC,{enter(){cast=[hero('tima',0,{side:'L'}),hero('bit',0,{side:'R'}),hero('klik',0,{riding:true})];const z=zoneStart(4,{ph:0,i:-1,cur:null,pile:{in:[],out:[]},task:-1,si:null,so:null,run:null});
   run(async()=>{await wait(300);await say('r1');GOAL='Куда отвезти: ввод или вывод?';SC.z4.next();await say('r2')})},
  prog(){return ZS.ph*100+(ZS.ph?ZS.task:ZS.i)},
  next(){const z=ZS;z.i++;if(z.i>=Z4D.length){z.cur=null;SC.z4.phaseB();return}const d=Z4D[z.i],g=z4geo();

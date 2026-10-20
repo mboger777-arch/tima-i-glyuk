@@ -150,7 +150,17 @@ function drawCast(){const v=vis();cast.forEach(c=>{if(c.hide){c.dx=null;return}c
 const LEFT=k=>safeL()+(k||0),RIGHT=k=>safeR()-(k||0);
 // ---- облачко речи у говорящего героя; иначе — доска с заданием ----
 let GOAL='';
-function talkerX(){if(!talk)return 640;const c=cast.find(c=>c.n===talk.who);return c?c.dx:null}
+function talkerX(){if(!talk)return 640;const c=cast.find(c=>c.n===talk.who&&!c.hide);if(c)return c.dx;if(talk.who==='glyuk'&&CAMEO.on)return CAMEO.x;return null}
+// Глюк, которого нет на сцене, выглядывает из «глючного» окошка, пока говорит
+const CAMEO={on:0,a:0,x:0};
+function drawCameo(){const want=talk&&talk.who==='glyuk'&&scene!=='title'&&!cast.some(c=>c.n==='glyuk'&&!c.hide&&(c.k==null||c.k>.5));CAMEO.a=clamp(CAMEO.a+(want?DT*5:-DT*5),0,1);CAMEO.on=CAMEO.a>0;if(!CAMEO.on)return;
+ const e=ease(CAMEO.a),w=200,h=w/aspect('screen'),x=safeR()-w/2-10,y=safeT()+120+h/2;CAMEO.x=x;
+ X.save();X.translate(x,y);X.scale(.6+.4*e,.6+.4*e);X.rotate(Math.sin(T*7)*.03*e);X.globalAlpha=e;sprW('screen',0,0,w);
+ X.beginPath();X.rect(-w*.4,-h*.38,w*.8,h*.7);X.clip();X.fillStyle='rgba(30,10,60,.55)';X.fillRect(-w*.4,-h*.38,w*.8,h*.7);
+ const gh=h*.95;spr(Math.sin(T*3)>0?'glyuk_laugh':'glyuk',Math.sin(T*2)*6,h*.32+gh*.18-Math.abs(Math.sin(T*4.5))*8,gh,{ay:1});
+ // помехи-«глитч»
+ for(let i=0;i<3;i++){X.globalAlpha=.25*e;X.fillStyle=i%2?'#ff4fd8':'#4ff0ff';X.fillRect(-w*.4,-h*.38+((T*90+i*37)%(h*.7)),w*.8,3)}
+ X.restore()}
 function drawTalk(){const v=vis();const top=safeT();
  if(talk&&talk.text){const tx=talkerX();let bw=Math.min(700,v.w*.5),bh=200,top=safeT();{const mx=Math.min(900,v.w*.66,safeR()-safeL()-130);for(let k=0;k<12;k++){const f=fitText(talk.text,bw*.84,bh*.6,46,BODY,44);if(f.L.length*f.lh<=bh*.6&&f.L.every(l=>X.measureText(l).width<=bw*.84))break;if(bw<mx)bw=Math.min(mx,bw+50);else if(bh<270)bh+=25;else break}}let bx=tx==null?640:clamp(tx+(tx<640?bw*.42:-bw*.42),safeL()+110+bw/2,safeR()-bw/2);if(SCN&&SCN.bubbleX)bx=SCN.bubbleX(bw,tx);if(SCN&&SCN.bubble){const o=SCN.bubble(bw,tx);bx=o.x;top=o.top;bw=Math.max(o.w||0,bw)}
   const flip=tx!=null&&tx>bx;X.save();X.translate(bx,top+bh/2);X.scale(flip?-1:1,1);const bi=IM.bubble;if(okI(bi))X.drawImage(bi,-bw/2,-bh/2,bw,bh);X.restore();
@@ -189,7 +199,7 @@ function loop(now){DT=PORTRAIT()?0:clamp((now-last)/1000,0,.05);last=now;T+=DT;f
  const sx=(Math.random()-.5)*shake,sy=(Math.random()-.5)*shake;shake*=Math.pow(.004,DT);if(shake<.3)shake=0;
  X.setTransform(DPR*S,0,0,DPR*S,DPR*(OX+sx),DPR*(OY+sy));BASE=X.getTransform();UI=[];GND=[];if(G.auditReq){G.auditReq=0;AUD={t:[],h:[]};}else AUD=null;stepParticles();
  if(!PORTRAIT()){try{SCN&&SCN.draw()}catch(e){console.error(e)}
- drawParticles();try{if(SCN&&SCN.ui)SCN.ui()}catch(e){console.error(e)}if(scene!=='load'&&scene!=='title')homeBtn();drawTalk();if(AUD)G._aud=AUD}
+ drawParticles();try{if(SCN&&SCN.ui)SCN.ui()}catch(e){console.error(e)}drawCameo();if(scene!=='load'&&scene!=='title')homeBtn();drawTalk();if(AUD)G._aud=AUD}
  if(fade>0){const v=vis();X.fillStyle=`rgba(10,8,24,${fade})`;X.fillRect(v.x0,v.y0,v.w,v.h);fade=Math.max(0,fade-DT*2.6)}
  if(PORTRAIT())drawRotate();
  requestAnimationFrame(loop)}

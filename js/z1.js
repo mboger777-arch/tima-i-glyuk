@@ -8,7 +8,7 @@ const Z1I=[{k:'bell',s:'ear',lab:'Звенит'},{k:'lemon',s:'mouth',lab:'Ки�
 const SND={bell:'bell',drum:'drum'};
 function z1geo(){const P=lineup(6);const x0=P.x0,x1=P.x1;const n=5,step=(x1-x0)/n;const gh=Math.min(230,step*.94/.62),gw=Math.min(150,step-8);
  return{gates:SENSES.map((s,i)=>({id:s,x:x0+step*(i+.5),y:gY()-gh/2,w:Math.max(gw,step-6),h:gh,gh})),cx:(x0+x1)/2,iy:300}}
-SC.z1=Object.assign({},DRAGSC,{enter(){cast=[hero('tima',0,{side:'L'}),hero('bit',0,{side:'L',ov:.32,z:-1}),hero('glyuk',0,{side:'R',h:300})];const z=zoneStart(1,{i:-1,item:null,eat:null});
+SC.z1=Object.assign({},DRAGSC,{enter(){cast=[hero('tima',0,{side:'L'}),hero('bit',0,{side:'L',ov:.32,z:-1}),hero('glyuk',0,{side:'R',h:300}),hero('klik',0,{riding:true})];const z=zoneStart(1,{i:-1,item:null,eat:null});
   run(async()=>{await wait(300);await say('s1');pose('glyuk','laugh',2);await say('s2');GOAL='Перетащи вещь в нужные ворота';await say('s3');SC.z1.next()})},
  prog(){return ZS.i},
  next(){const z=ZS;z.i++;if(z.i>=Z1I.length){z.item=null;GOAL='';winZone('s_win','g_z1');return}

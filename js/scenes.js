@@ -35,9 +35,13 @@ function mistake(){ZS.mist++;SFX.bad();react(false)}
 // ---- герои по краям: c.side 'L'/'R', c.ov — насколько заходит на соседа; возвращает свободную середину ----
 function HR(n){return cast.find(c=>c.n===n)}
 function lineup(gap){gap=gap==null?14:gap;let xl=safeL(),xr=safeR();
- for(const c of cast)c.hide=c.minW?vis().w<c.minW:c.hide;
- for(const c of cast){if(c.side!=='L'||c.hide)continue;const w=heroBW(c),lw=heroLW(c);const edge=xl===safeL();c.x=edge?xl+w/2:xl-(c.ov||0)*lw+lw/2;xl=Math.max(xl,c.x+(edge?w/2-(w-lw)/2:lw/2))}
- for(const c of cast){if(c.side!=='R'||c.hide)continue;const w=heroBW(c),lw=heroLW(c);const edge=xr===safeR();c.x=edge?xr-w/2:xr+(c.ov||0)*lw-lw/2;xr=Math.min(xr,c.x-(edge?w/2-(w-lw)/2:lw/2))}
+ for(const c of cast){if(c.minW)c.riding=vis().w<c.minW}
+ for(const c of cast){if(c.side!=='L'||c.hide||c.riding)continue;const w=heroBW(c),lw=heroLW(c);const edge=xl===safeL();c.x=edge?xl+w/2:xl-(c.ov||0)*lw+lw/2;xl=Math.max(xl,c.x+(edge?w/2-(w-lw)/2:lw/2))}
+ for(const c of cast){if(c.side!=='R'||c.hide||c.riding)continue;const w=heroBW(c),lw=heroLW(c);const edge=xr===safeR();c.x=edge?xr-w/2:xr+(c.ov||0)*lw-lw/2;xr=Math.min(xr,c.x-(edge?w/2-(w-lw)/2:lw/2))}
+ // Клик сидит на голове у Бита (рядом с лампочкой), когда на полу тесно
+ for(const c of cast){if(!c.riding)continue;const t=HR('bit')||HR('tima');if(!t)continue;c.h0=c.h0||c.h;c.h=c.h0*.47;const tw=heroBW(t);const jt=t.jump&&T>t.jump&&T-t.jump<.7?Math.sin((T-t.jump)/.7*Math.PI)*60:0;
+  c.x=t.x-tw*.17;c.gy=gY()-t.h*.83-jt;c.z=5}
+ for(const c of cast){if(c.riding===false&&c.h0){c.h=c.h0;c.gy=null}}
  return{x0:xl+gap,x1:xr-gap,cx:(xl+xr)/2}}
 // реакции героев: верно — все радуются, Глюк ворчит; ошибка — Глюк хихикает, Тима думает
 function react(ok,x,y){const t=HR('tima'),b=HR('bit'),k=HR('klik'),g=HR('glyuk');

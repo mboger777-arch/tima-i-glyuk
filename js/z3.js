@@ -17,7 +17,7 @@ function z3slots(){const s=bgScale(),P=lineup(10);const PP=id=>Z3P.find(p=>p.id=
  for(const [id,base,f] of [['keyboard','monitor',-.11],['mouse','sysunit',-.36]]){const p=PP(id),h=p.h*s*k2,w=h*aspect(id),bx=R[base].x+R[base].sw*f,b=bgXY(0,p.b)[1];R[id]={id,x:bx,y:b-h/2,w:Math.max(w,90),h:Math.max(h,90),b,sh:h,sw:w,k}}
  R.k=k2;return R}
 function z3slot(p){return z3slots()[p.id]}
-SC.z3=Object.assign({},DRAGSC,{enter(){cast=[hero('tima',0,{side:'L'}),hero('bit',0,{side:'R'})];const z=zoneStart(3,{placed:{},n:0,on:0});
+SC.z3=Object.assign({},DRAGSC,{enter(){cast=[hero('tima',0,{side:'L'}),hero('bit',0,{side:'R'}),hero('klik',0,{riding:true})];const z=zoneStart(3,{placed:{},n:0,on:0});
   run(async()=>{await wait(300);await say('w1');GOAL='Перетащи деталь на её тень';SC.z3.layout();await say('w2')})},
  prog(){return ZS.n},
  layout(){const z=ZS;const P=lineup(16),x0=P.x0,x1=P.x1;let k=.66*bgScale();let ws=Z3ORD.map(id=>Z3P.find(p=>p.id===id).h*k*aspect(id));

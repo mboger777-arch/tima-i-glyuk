@@ -13,6 +13,7 @@ async def run(b,W,H,F,R):
   pg=await ctx.new_page();errs=[];pg.on('pageerror',lambda e:errs.append(str(e)))
   await pg.goto(URL);await pg.evaluate('localStorage.clear()');await pg.reload();await pg.wait_for_function('G.scene==="title"',timeout=40000)
   await pg.evaluate('G.fast=true;G.mute=true;SV.open=6;SV.stars=[1,1,1,1,1];save()')
+  if os.environ.get('SAYLOG'):await pg.evaluate("window.SAYLOG=[];for(const f of ['say','sayNow']){const o=window[f];window[f]=function(k){SAYLOG.push([f,k,G.scene,GOAL,ZS?ZS.mist:0]);return o.apply(this,arguments)}}")
   async def tap(x,y):
     q=await pg.evaluate(f'G.pg({x},{y})');await pg.touchscreen.tap(q['x'],q['y']);await pg.wait_for_timeout(240)
   async def taps(ok):
@@ -74,6 +75,7 @@ async def run(b,W,H,F,R):
     await pg.screenshot(path=f'{out}/{sc}_end.png')
     R.append(f'{tag} {sc} steps {steps} -> {await pg.evaluate("G.scene")}')
   if errs:F.append(f'{tag} page errors: {errs[:3]}')
+  if os.environ.get('SAYLOG'):json.dump(await pg.evaluate('SAYLOG'),open(f'shots/saylog_{tag}.json','w'),ensure_ascii=False,indent=0)
   await ctx.close()
 async def main():
   F=[];R=[]
