@@ -154,7 +154,7 @@ function talkerX(){if(!talk)return 640;const c=cast.find(c=>c.n===talk.who&&!c.h
 // Глюк, которого нет на сцене, выглядывает из «глючного» окошка, пока говорит
 const CAMEO={on:0,a:0,x:0};
 function drawCameo(){const want=talk&&talk.who==='glyuk'&&scene!=='title'&&!cast.some(c=>c.n==='glyuk'&&!c.hide&&(c.k==null||c.k>.5));CAMEO.a=clamp(CAMEO.a+(want?DT*5:-DT*5),0,1);CAMEO.on=CAMEO.a>0;if(!CAMEO.on)return;
- const e=ease(CAMEO.a),w=200,h=w/aspect('screen'),x=safeR()-w/2-10,y=safeT()+120+h/2;CAMEO.x=x;
+ const e=ease(CAMEO.a),w=200,h=w/aspect('screen'),x=safeR()-w/2-10,y=safeT()+96+h/2;CAMEO.x=x;
  X.save();X.translate(x,y);X.scale(.6+.4*e,.6+.4*e);X.rotate(Math.sin(T*7)*.03*e);X.globalAlpha=e;sprW('screen',0,0,w);
  X.beginPath();X.rect(-w*.4,-h*.38,w*.8,h*.7);X.clip();X.fillStyle='rgba(30,10,60,.55)';X.fillRect(-w*.4,-h*.38,w*.8,h*.7);
  const gh=h*.95;spr(Math.sin(T*3)>0?'glyuk_laugh':'glyuk',Math.sin(T*2)*6,h*.32+gh*.18-Math.abs(Math.sin(T*4.5))*8,gh,{ay:1});
