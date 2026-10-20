@@ -10,7 +10,7 @@ ZL=[int(x) for x in os.environ.get('ZS','1,2,3,4,5,6').split(',')]
 async def run(b,W,H,F,R):
   tag=f'{W}x{H}';out=f'shots/touch/{tag}';os.makedirs(out,exist_ok=True)
   ctx=await b.new_context(viewport={'width':W,'height':H},has_touch=True,is_mobile=True,device_scale_factor=2)
-  pg=await ctx.new_page();errs=[];pg.on('pageerror',lambda e:errs.append(str(e)))
+  pg=await ctx.new_page();errs=[];pg.on('pageerror',lambda e:errs.append(str(e)));pg.on('console',lambda m:m.type=='error' and errs.append('console: '+m.text))
   await pg.goto(URL);await pg.evaluate('localStorage.clear()');await pg.reload();await pg.wait_for_function('G.scene==="title"',timeout=40000)
   await pg.evaluate('G.fast=true;G.mute=true;SV.open=6;SV.stars=[1,1,1,1,1];save()')
   if os.environ.get('SAYLOG'):await pg.evaluate("window.SAYLOG=[];for(const f of ['say','sayNow']){const o=window[f];window[f]=function(k){SAYLOG.push([f,k,G.scene,GOAL,ZS?ZS.mist:0]);return o.apply(this,arguments)}}")
