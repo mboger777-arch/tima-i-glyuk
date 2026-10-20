@@ -13,5 +13,19 @@ SoX could not be found!
 Warning: flash-attn is not installed. Will only run the manual PyTorch version. Please install flash-attn for faster inference.
 ********
  
-Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 2541.23it/s]
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 1657.66it/s]
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+0 i1 0.1  Однажды вечером Тима включил компьютер, а там завелся озорный вирус.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+1 i2 0.0  Хи! Хи! Я глюк!  Я перепутал всю информацию в компьютере!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+2 i3 0.0  Ой, картинки пищат, а буквы рассыпались.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+3 i4 0.0  Я Робот Бит. Давай уменьшимся и войдем внутрь компьютера.  Наведем порядок!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+4 i5 0.0  Пи! Пи! Я мышка клик! Я с вами!
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.

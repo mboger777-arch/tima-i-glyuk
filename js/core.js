@@ -121,7 +121,8 @@ function cheer(){cast.forEach((c,i)=>{c.jump=T+i*.1;if(IM[c.n+'_cheer'])pose(c.n
 function hop(n){const c=cast.find(c=>c.n===n);if(c)c.jump=T}
 function oops(n){const c=cast.find(c=>c.n===n);if(c)c.wob=T}
 function spriteOf(c){if(c.poseT&&T>c.poseT){c.pose='';c.poseT=0}const k=c.pose?c.n+'_'+c.pose:c.n;return okI(IM[k])?k:c.n}
-function drawHero(c){const k=spriteOf(c),im=IM[k];if(!okI(im))return;const h=c.h*(c.k||1),w=h*im.naturalWidth/im.naturalHeight;
+const POSEK={tima_cheer:1.1,klik_jump:1.05};
+function drawHero(c){const k=spriteOf(c),im=IM[k];if(!okI(im))return;const h=c.h*(c.k||1)*(POSEK[k]||1),w=h*im.naturalWidth/im.naturalHeight;
  const talking=talk&&talk.who===c.n;const br=1+Math.sin(T*2.1+c.ph)*.007;let dy=0,rot=Math.sin(T*1.2+c.ph)*.012;
  if(talking)dy-=Math.abs(Math.sin((T-talk.t0)*4.2))*5;// говорит — лёгкое покачивание
  if(c.jump&&T>c.jump&&T-c.jump<.7){const u=(T-c.jump)/.7;dy-=Math.sin(u*Math.PI)*60}
@@ -145,8 +146,8 @@ function drawTalk(){const v=vis();const top=safeT();
   // внутренняя область облачка (без хвостика)
   const iw=bw*.84,ih=bh*.6,cy=top+bh*.4;const nm=NAMES[talk.who];if(nm)txt(nm,bx-bw*.36,top+bh*.05,30,'#fff',{f:FONT,al:'left',st:'#2a7a7a',lw:6,box:[bx-bw/2,top-30,bx+bw/2,top+bh],id:'name'});
   textIn(talk.text,bx,cy+6,iw,ih,46,'#2b2440',{f:BODY,st:0,id:'talk',min:44});talk.box=[bx-bw/2,top,bw,bh*.8];return}
- if(GOAL){const bw=Math.min(840,v.w*.6),bh=bw/aspect('sign4');const bx=SCN&&SCN.goalX?SCN.goalX():640;const top=SCN&&SCN.goalTop?SCN.goalTop(bh):safeT();X.save();sprW('sign4',bx,top+bh/2,bw);X.restore();
-  textIn(GOAL,bx,top+bh/2,bw*.86,bh*.6,46,'#fff6dc',{f:FONT,st:'#3a1a06',lw:6,id:'goal'})}}
+ if(GOAL){const bw=Math.min(780,v.w*.58),bh=bw/aspect('plank');const bx=SCN&&SCN.goalX?SCN.goalX():640;const top=SCN&&SCN.goalTop?SCN.goalTop(bh):safeT();X.save();sprW('plank',bx,top+bh/2,bw);X.restore();
+  textIn(GOAL,bx,top+bh/2,bw*.88,bh*.62,46,'#fff6dc',{f:FONT,st:'#3a1a06',lw:6,id:'goal'})}}
 // ---- сцены ----
 const SC={};let scene='load',SCN=null,ZS=null;
 function go(n,arg){GEN++;scene=n;SCN=SC[n];fade=1;stopTalk();PS.length=0;GOAL='';cast=[];ZS=null;SCN.enter&&SCN.enter(arg)}

@@ -208,5 +208,30 @@
   "w": 309,
   "h": 700,
   "edge": false
+ },
+ "g_eye": {
+  "w": 431,
+  "h": 700,
+  "edge": false
+ },
+ "g_ear": {
+  "w": 404,
+  "h": 700,
+  "edge": false
+ },
+ "g_nose": {
+  "w": 422,
+  "h": 700,
+  "edge": false
+ },
+ "g_mouth": {
+  "w": 436,
+  "h": 700,
+  "edge": false
+ },
+ "g_hand": {
+  "w": 395,
+  "h": 700,
+  "edge": false
  }
 }

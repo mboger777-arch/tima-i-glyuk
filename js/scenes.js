@@ -11,7 +11,7 @@ function plaque(t,x,y,w,o){o=o||{};const sp=o.sp||'sign3';const h=w/aspect(sp);X
 const DRG={items:[],targets:[],drag:null,sel:null,onDrop:null};
 function dragReset(items,targets,onDrop){DRG.items=items;DRG.targets=targets;DRG.drag=null;DRG.sel=null;DRG.onDrop=onDrop;DRG.onTap=null}
 function hitItem(x,y){let best=null,bd=1e9;for(const o of DRG.items){if(o.off)continue;const d=Math.hypot(x-o.x,y-o.y);if(d<(o.r||70)+18&&d<bd){bd=d;best=o}}return best}
-function hitTarget(x,y){for(const t of DRG.targets){if(t.off)continue;if(Math.abs(x-t.x)<t.w/2+10&&Math.abs(y-t.y)<t.h/2+10)return t}return null}
+function hitTarget(x,y){let best=null,bd=1e9;for(const t of DRG.targets){if(t.off)continue;const dx=Math.abs(x-t.x),dy=Math.abs(y-t.y);if(dx<t.w/2+10&&dy<t.h/2+10){const d=Math.hypot(dx/(t.w/2+10),dy/(t.h/2+10));if(d<bd){bd=d;best=t}}}return best}
 function dragHold(pid,x,y){if(locked()||DRG.drag)return;const o=hitItem(x,y);
  if(o){DRG.drag={o,pid,dx:x-o.x,dy:y-o.y,sx:x,sy:y,moved:false};o.ret=0;o.lift=1;SFX.blip();return}
  if(DRG.sel){const t=hitTarget(x,y);if(t){const s=DRG.sel;DRG.sel=null;dropOn(s,t)}}}

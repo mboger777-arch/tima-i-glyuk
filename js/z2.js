@@ -5,7 +5,7 @@ const Z2W=[[{t:'text',w:'КОТ'},{t:'num',w:'25'},{t:'sound',s:'notes',fx:'melo
  [{t:'pic',s:'c_photo'},{t:'sound',s:'bell',fx:'bell'},{t:'num',w:'7+3'},{t:'text',w:'Привет!'}]];
 const Z2C=[{k:'c_book',ok:1,v:'lc_book'},{k:'n_apple'},{k:'c_flash',ok:1,v:'lc_flash'},{k:'n_sock'},{k:'n_ball'},{k:'c_disc',ok:1,v:'lc_disc'},{k:'n_cup'},{k:'c_note',ok:1,v:'lc_note'}];
 function z2geo(){const x0=safeL()+heroX(cast[0])+10,x1=safeR()-heroX(cast[1])-6;const step=(x1-x0)/4;const ch=200;
- return{x0,x1,chests:Z2T.map((t,i)=>({id:t,x:x0+step*(i+.5),y:gY()-ch/2,w:Math.min(step-8,200),h:ch+70,ch})),sy:325,step}}
+ return{x0,x1,chests:Z2T.map((t,i)=>({id:t,x:x0+step*(i+.5),y:gY()-ch/2,w:Math.min(step-8,200),h:ch+70,ch})),sy:305,step}}
 SC.z2=Object.assign({},DRAGSC,{enter(){cast=[hero('tima',0,{h:360}),hero('bit',0,{h:340})];const z=zoneStart(2,{ph:0,wave:-1,items:[],done:0,stored:0});
   run(async()=>{await wait(300);await say('l1');await say('l2');GOAL='Перетащи шарик в нужный сундук';SC.z2.wave();await say('l3')})},
  prog(){return ZS.ph*100+ZS.done},
