@@ -159,3 +159,66 @@ Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 54 w1 0.0  Ой, Глюк разобрал компьютер на детали.
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+55 w2 0.0  Соберём, перетащи каждую деталь на её тень на столе.
+manifest 56
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+56 p_monitor 0.0  Монитор показывает текст и картинки.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+57 p_sysunit 0.0  Системный блок самый главный. Внутри процессор и память.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+58 p_keyboard 0.0  Клавиатура. Нажимаешь кнопку и появляется буква.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+59 p_mouse 0.0  Пи! Это мышь почти как я! Она двигает стрелку на экране.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+60 p_speakers 0.0  Колонки играют звуки и музыку.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+61 p_printer 0.0  Принтер печатает на бумаге.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+62 p_mic 0.0  Микрофон слышит твой голос.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+63 w_wrong 0.0  Не подходит. Посмотри, какая тень похожа.
+manifest 64
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+64 w_win 0.0  Компьютер собран и включился.  Ура!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+65 g_z3 0.0  Ах, так? Тогда я запутаю все дороги.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+66 r1 0.0  Это дорога информации. Одни устройства вводят информацию в компьютер, другие выводят ее к нам.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+67 r2 0.286  Куда отвести устройство?  Нажми «вот» или «вывод».
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+68 r_keyboard 0.0  Клавиатурой мы вводим буквы.  Это ввод!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+69 r_mic 0.0  Микрофон вводит голос. Это ввод.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+70 r_scanner 0.0  Сканер вводит картинку с бумаги. Это ввод.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+71 r_webcam 0.0  Камера вводит видео. Это ввод.
+manifest 72
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+72 r_monitor 0.0  Монитор выводит картинку. Это вывод.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+73 r_speakers 0.0  Колонки выводят звук. Это вывод.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+74 r_printer 0.0  Принтер выводит текст на бумагу. Это вывод!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+75 r_headphones 0.0  Наушники выводят звук. Это вывод.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+76 r_in 0.0  Подумай. Через него информация входит в компьютер?
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+77 r_out 0.0  Подумай, через него информация выходит к нам.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+78 r3 0.1  А теперь проведем информацию по всей дороге.  Вот процессор вывод.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
