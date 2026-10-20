@@ -29,3 +29,27 @@ Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 4 i5 0.0  Пи! Пи! Я мышка клик! Я с вами!
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+5 i6 0.0  Вперёд, внутрь компьютера.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+6 m1 0.125  Выбирай место на карте. Начнём с города Чуст.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+7 m_lock 0.0  Сначала пройди прошлое место.
+manifest 8
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+8 m_fin 0.125  Все звезды собраны. Скорее на экран ловить глюко.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+9 s1 0.077  Мы в городе Чуств, мир мы узнаем глазами, ушами, носом, языком и руками.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+10 s2 0.0  Хи-хи! А я перепутал все вещи! Попробуй разбери!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+11 s3 0.0  Перетащи вещь в нужные ворота.  Как мы узнаем, какая она?
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+12 it_bell 0.0  Колокольчик звенит!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.

@@ -6,6 +6,8 @@ const FINPOS=[1065,150];
 // надпись на нарисованной табличке; текст всегда внутри
 function plaque(t,x,y,w,o){o=o||{};const sp=o.sp||'sign3';const h=w/aspect(sp);X.save();X.translate(x,y);if(o.a!=null)X.globalAlpha=o.a;sprW(sp,0,0,w);X.restore();
  textIn(t,x,y,w*.84,h*.62,o.size||44,o.col||'#fff6dc',{f:o.f||FONT,st:'#3a1a06',lw:6,id:o.id||'plaque',min:o.min||18});return h}
+// картинка вписана в квадрат d×d (без растяжения)
+function fitSpr(n,x,y,d,o){const a=aspect(n);return spr(n,x,y,a>1?d/a:d,o)}
 // ---- перетаскивание: тащить пальцем ИЛИ нажать на предмет, потом на цель ----
 // объект: {id,x,y,hx,hy,r (радиус касания), off(не трогается)}; цель: {id,x,y,w,h}
 const DRG={items:[],targets:[],drag:null,sel:null,onDrop:null};

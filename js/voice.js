@@ -1,1 +1,1 @@
-const VOICE={};
+const VOICE={"i1": ["i1_f67198a1.mp3", 5.14], "i2": ["i2_29d6bcb0.mp3", 5.54], "i3": ["i3_ddad8bbd.mp3", 4.13], "i4": ["i4_aede0f4c.mp3", 5.52], "i5": ["i5_c09263fe.mp3", 3.43], "i6": ["i6_09479fff.mp3", 2.47], "m1": ["m1_0e523951.mp3", 3.43], "m_lock": ["m_lock_d9fe4e9a.mp3", 2.09]};

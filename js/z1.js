@@ -7,7 +7,7 @@ const Z1I=[{k:'bell',s:'ear',lab:'Звенит'},{k:'lemon',s:'mouth',lab:'Ки�
  {k:'drum',s:'ear',lab:'Гремит'},{k:'teddy',s:'hand',lab:'Мягкий'},{k:'lollipop',s:'mouth',lab:'Сладкий'},{k:'traffic',s:'eye',lab:'Горит зелёный'},{k:'perfume',s:'nose',lab:'Пахнет цветами'}];
 const SND={bell:'bell',drum:'drum'};
 function z1geo(){const t=cast[0];const x0=safeL()+heroX(t)+10,x1=safeR()-(cast[1]?heroX(cast[1]):0)-6;const gh=230,n=5,gw=Math.min(150,(x1-x0)/n-8);const step=(x1-x0)/n;
- return{gates:SENSES.map((s,i)=>({id:s,x:x0+step*(i+.5),y:gY()-gh/2,w:Math.max(gw,step-6),h:gh,gh})),cx:(x0+x1)/2,iy:320}}
+ return{gates:SENSES.map((s,i)=>({id:s,x:x0+step*(i+.5),y:gY()-gh/2,w:Math.max(gw,step-6),h:gh,gh})),cx:(x0+x1)/2,iy:300}}
 SC.z1=Object.assign({},DRAGSC,{enter(){cast=[hero('tima',0,{h:360}),hero('glyuk',0,{h:240})];const z=zoneStart(1,{i:-1,item:null,eat:null});
   run(async()=>{await wait(300);await say('s1');pose('glyuk','laugh',2);await say('s2');GOAL='Перетащи вещь в нужные ворота';await say('s3');SC.z1.next()})},
  prog(){return ZS.i},
@@ -24,8 +24,8 @@ SC.z1=Object.assign({},DRAGSC,{enter(){cast=[hero('tima',0,{h:360}),hero('glyuk'
    // вихрь в воротах
    if(z.eat&&z.eat.t===t){X.save();X.globalAlpha=.5;X.fillStyle='#fff';X.beginPath();X.arc(t.x,t.y+20,40+Math.sin(T*20)*8,0,7);X.fill();X.restore()}});
   drawCast();
-  const o=z.item;if(o){stepItems();stepFly(o);const k=z.eat?clamp(1-(T-z.eat.t0)/.4,.1,1):1;const h=150*k*(o.lift?1.12:1);selGlow(o,95);
+  const o=z.item;if(o){stepItems();stepFly(o);const k=z.eat?clamp(1-(T-z.eat.t0)/.4,.1,1):1;const h=175*k*(o.lift?1.12:1);selGlow(o,105);
    X.save();if(okI(IM.shadow)&&!o.lift){}spr(o.d.k,o.x,o.y+Math.sin(T*2.5)*4,h,{rot:o.lift?Math.sin(T*8)*.05:0});X.restore();
-   if(k>.9)plaque(o.d.lab,o.x,o.y+h/2+32,Math.max(220,o.d.lab.length*24),{size:38,id:'lab'})}},
+   if(k>.9)plaque(o.d.lab,o.x,o.y+h/2+34,Math.max(300,o.d.lab.length*30),{size:46,id:'lab',sp:'sign4'})}},
  ui(){progDots(Z1I.length,Math.max(0,ZS.i))},
  taps(ok){const z=ZS,o=z.item;if(!o||o.fly||z.lock)return['wait'];const g=z1geo();const want=o.d.s;const t=g.gates.find(q=>ok?q.id===want:q.id!==want);return[[o.x,o.y],[t.x,t.y]]}});
