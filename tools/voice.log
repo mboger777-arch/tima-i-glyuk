@@ -105,3 +105,40 @@ manifest 32
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 32 s_win 0.0  Ура! Информацию мы получаем глазами, ушами, носом, языком и руками.
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+33 g_z1 0.0  Ой, ой! Ну ладно, в другом месте я ещё напутаю.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+34 l1 0.0  Это библиотека сундуков.  Информация бывает разная.  Текст, звуки, картинки и всякие цифры.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+35 l2 0.0  Хи! Хи!  Я перемешал все шарики!  Где тут что?
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+36 l3 0.0  Перетащи шарик в нужный сундук.  Нажми на шарик и он покажет, что внутри.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+37 lt_text 0.0  Правильно! Это текст его читают.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+38 lt_num 0.0  Правильно! Это число с ним считают!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+39 lt_sound 0.0  Правильно, это звук его слушают.
+manifest 40
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+40 lt_pic 0.0  Правильно! Это картинка! Её рассматривают!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+41 lw_text 0.0  Тут буквы и слова.  Ищи сундук с книгой.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+42 lw_num 0.167  Тут цифры. Ищи сундук со щетами.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+43 lw_sound 0.143  Это можно послушать.  Ищи сундук с натой.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+44 lw_pic 0.0  Это можно рассмотреть ищи сундук с рамкой.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+45 l4 0.0  Все шарики на месте, а на чём хранят информацию, на носителях?
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+46 l5 0.0  Положи в хранилище только носители, то на чём можно записать и сохранить информацию.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.

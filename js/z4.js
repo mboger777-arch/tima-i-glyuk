@@ -25,7 +25,7 @@ SC.z4=Object.assign({},DRAGSC,{enter(){cast=[hero('tima',0,{h:360})];const z=zon
   plaque('Процессор',g.px,g.py+20,260,{size:40,id:'cpu'});
   if(z.ph===0){
    for(const [io,s,lab] of [['in',g.sin,'Ввод'],['out',g.sout,'Вывод']]){const sel=DRG.sel||DRG.drag;const pu=sel?1+Math.sin(T*6)*.03:1;
-    X.save();X.translate(s.x,s.y);X.scale(pu,pu);plaque(lab,0,-70,260,{size:56,id:'st'+io});X.restore();
+    X.save();X.translate(s.x,gY()-218);X.scale(pu,pu);plaque(lab,0,0,250,{size:56,id:'st'+io});X.restore();
     spr('wagon',s.x,gY()-6,120,{ay:1});z.pile[io].forEach((id,i)=>spr(id,s.x-62+(i%4)*42,gY()-92-Math.floor(i/4)*40-(i%2)*10,70,{ay:1}));
     }
    // поезд: вагончик везёт устройство

@@ -162,7 +162,10 @@ C.addEventListener('pointerdown',e=>{if(PORTRAIT())return;e.preventDefault();ac(
  for(let i=UI.length-1;i>=0;i--){const b=UI[i];const dx=Math.abs(x-b.x),dy=Math.abs(y-b.y);if(dx<Math.max(b.w/2+6,mh)&&dy<Math.max(b.h/2+6,mh)){const inside=dx<b.w/2+6&&dy<b.h/2+6;const d=(inside?0:1e5)+Math.hypot(dx,dy);if(d<bd){bd=d;best=b}}}
  if(best){const b=best;if(b.dis)return;if(locked()&&!b.always)return;SFX.click();b.fn();return}
  if(talk&&talk.box&&skipTalk){const[bx,by,bw,bh]=talk.box;if(x>bx&&x<bx+bw&&y>by&&y<by+bh){skipTalk();return}}
+ if(!(typeof DRG!=='undefined'&&(DRG.drag||DRG.sel))&&heroTap(x,y))return;
  if(locked())return;if(SCN&&SCN.tap)SCN.tap(x,y)},{passive:false});
+// нажал на героя — он подпрыгивает
+function heroTap(x,y){for(const c of cast){if(c.dx==null)continue;const w=heroX(c),h=c.h*(c.k||1);if(Math.abs(x-c.dx)<w/2*.8&&y<c.y&&y>c.y-h*.95){if(c.jump&&T-c.jump<.7)return true;c.jump=T;if(c.n==='klik')SFX.squeak();else if(c.n==='bit')SFX.blip();else SFX.pop();return true}}return false}
 C.addEventListener('pointermove',e=>{const[x,y]=toD(e);PX=x;PY=y;if(PTR.has(e.pointerId)){PTR.get(e.pointerId).x=x;PTR.get(e.pointerId).y=y}if(SCN&&SCN.move)SCN.move(e.pointerId,x,y)});
 const _up=e=>{PTR.delete(e.pointerId);if(SCN&&SCN.up)SCN.up(e.pointerId)};C.addEventListener('pointerup',_up);C.addEventListener('pointercancel',_up);C.addEventListener('pointerleave',_up);
 ['dblclick','contextmenu','gesturestart','gesturechange'].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault(),{passive:false}));

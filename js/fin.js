@@ -28,7 +28,7 @@ SC.fin=Object.assign({},DRAGSC,{enter(){cast=[hero('tima',0,{h:360}),hero('bit',
   drawCast();
   if(gl&&!z.kind&&z.ph===3)DRG.targets[0]&&Object.assign(DRG.targets[0],{x:gl.dx,y:gY()-150});
   if(z.vacO){const o=z.vacO;stepItems();if(!o.off){selGlow(o,110);spr('vacuum',o.x,o.y,170,{rot:o.lift?Math.sin(T*9)*.05:0})}
-   else if(gl){const u=clamp((T-z.clean)/1.2,0,1);spr('vacuum',gl.dx-200,gY()-85,170,{flip:true});if(u<1){for(let i=0;i<3;i++){const v=(u*3+i/3)%1;spr('pixels',lerp(gl.dx,gl.dx-190,v),gY()-200+v*90,120*(1-v)+20,{a:1-v})}}}}
+   else if(gl&&T-z.clean<1.8){const u=clamp((T-z.clean)/1.2,0,1);X.save();X.globalAlpha=clamp((1.8-(T-z.clean))/.4,0,1);spr('vacuum',gl.dx-200,gY()-85,170,{flip:true});X.restore();if(u<1){for(let i=0;i<3;i++){const v=(u*3+i/3)%1;spr('pixels',lerp(gl.dx,gl.dx-190,v),gY()-200+v*90,120*(1-v)+20,{a:1-v})}}}}
   if(z.medal){const u=ease(clamp((T-z.medal)/.8,0,1));X.save();X.translate(g.cx-90,300);X.scale(u,u);X.rotate(Math.sin(T*2)*.06);spr('medal',0,0,230);X.restore();
    plaque('Знаток информации',g.cx-90,462,420,{size:46,id:'medal',sp:'sign4'});for(let i=0;i<5;i++)spr('star',g.cx-90+(i-2)*66,545,58,{rot:Math.sin(T*2+i)*.1})}},
  ui(){const z=ZS,g=fingeo();if(z.ph===1)progDots(FHITS,z.hits);
