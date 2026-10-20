@@ -53,3 +53,55 @@ Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 12 it_bell 0.0  Колокольчик звенит!
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+13 it_drum 0.0  Барабан Гремит
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+14 it_rose 0.0  Роза пахнет!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+15 it_perfume 0.0  флакончик пахнет цветами
+manifest 16
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+16 it_lemon 0.0  Лимон кислый!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+17 it_lollipop 0.0  Леденец сладкий
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+18 it_hedgehog 0.0  Ёжик колючий!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+19 it_teddy 0.0  Мишка мягкий
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+20 it_rainbow 0.0  Радуга разноцветная!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+21 it_traffic 0.0  светофор горит зеленым
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+22 ok_eye 0.0  Верно, это мы видим глазами, это зрение.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+23 ok_ear 0.0  Верно! Это мы слышим ушами! Это слух!
+manifest 24
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+24 ok_nose 0.0  Верно! Запах мы чуем носом!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+25 ok_mouth 0.0  Верно! Вкус мы узнаем языком!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+26 ok_hand 0.0  Верно! Это можно потрогать руками!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+27 h_eye 0.0  Хм, это нужно увидеть, чем мы смотрим.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+28 h_ear 0.0  Хм, это нужно услышать, чем мы слушаем.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+29 h_nose 0.0  Хм, это нужно понюхать, чем мы нюхаем.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+30 h_mouth 0.0  Хм, это нужно попробовать на вкус, чем мы пробуем.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+31 h_hand 0.0  Хм, это нужно потрогать. Чем мы трогаем?
+manifest 32
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+32 s_win 0.0  Ура! Информацию мы получаем глазами, ушами, носом, языком и руками.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.

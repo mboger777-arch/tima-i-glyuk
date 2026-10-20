@@ -14,7 +14,7 @@ SC.fin=Object.assign({},DRAGSC,{enter(){cast=[hero('tima',0,{h:360}),hero('bit',
  quiz(){const z=ZS;z.ph=2;z.q++;if(z.q>=FQ.length){SC.fin.vac();return}GOAL='Пароль: вопрос '+(z.q+1)+' из 3';sayNow(FQ[z.q].k)},
  answer(id){const z=ZS,q=FQ[z.q];if(!q||z.lock)return;if(id===q.ok){SFX.ok();z.lock=true;run(async()=>{await sayNow('q_ok');z.lock=false;SC.fin.quiz()})}else{mistake();sayNow('q_no')}},
  vac(){const z=ZS;z.ph=3;GOAL='Перетащи антивирус к Глюку';cast.push(hero('glyuk',0,{pose:'angry',h:300}));const g=fingeo();
-  const o={id:'vac',x:g.x0+110,y:gY()-90,hx:g.x0+110,hy:gY()-90,r:100};z.vacO=o;dragReset([o],[{id:'glyuk',x:0,y:0,w:280,h:320}],(o,t)=>SC.fin.suck());sayNow('f3')},
+  const o={id:'vac',x:g.x0+110,y:gY()-90,hx:g.x0+110,hy:gY()-90,r:100};z.vacO=o;dragReset([o],[{id:'glyuk',x:g.cx+120,y:gY()-150,w:280,h:320}],(o,t)=>SC.fin.suck());sayNow('f3')},
  suck(){const z=ZS;if(z.ph!==3)return false;const o=z.vacO;o.off=1;z.lock=true;z.ph=4;z.clean=T;SFX.suck();GOAL='';
   run(async()=>{await wait(1300);pose('glyuk','');const gl=cast.find(c=>c.n==='glyuk');z.kind=1;burst(gl.dx,gY()-200,60,'spark',90);SFX.star();
    SV.fin=1;save();cast.splice(1,0,hero('klik',0));await say('f4');cheer();burst(640,250,120,'conf',null,1.5);await say('f5');z.medal=T;SFX.star();await say('f6');cheer();await say('f7');z.lock=false;z.done=true});return true},

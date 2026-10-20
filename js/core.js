@@ -110,7 +110,7 @@ function btn(id,im,x,y,d,fn,o){o=o||{};UI.push({id,x,y,w:d,h:d,fn,dis:o.dis,alwa
 // кнопка-доска с надписью
 function boardBtn(id,x,y,w,label,fn,o){o=o||{};const h=w/aspect('board');UI.push({id,x,y,w,h,fn,dis:o.dis});const hov=Math.abs(PX-x)<w/2&&Math.abs(PY-y)<h/2;const k=(hov?1.04:1)*(1+(o.pulse?Math.sin(T*4)*.03:0));
  X.save();X.translate(x,y);X.scale(k,k);sprW('board',0,0,w);X.shadowColor='transparent';X.restore();
- X.save();X.translate(x,y);X.scale(k,k);textIn(label,0,0,w*.78,h*.56,o.size||60,'#5a2a0a',{f:FONT,st:'rgba(255,245,220,.9)',lw:6,id});X.restore()}
+ X.save();X.translate(x,y);X.scale(k,k);textIn(label,0,0,w*.78,h*.56,o.size||60,'#fff6dc',{f:FONT,st:'#3a1a06',lw:7,id});X.restore()}
 // ---- герои: позы, дыхание (только равномерный масштаб), прыжки на землю, взгляд на ребёнка ----
 let cast=[];
 const HEROH={tima:420,bit:400,klik:230,glyuk:330};
@@ -183,7 +183,7 @@ function homeBtn(){if(scene==='map'){btn('home','b_home',safeL()+44,safeT()+42,8
 // поверни телефон: нарисованная рука с телефоном на размытой игровой сцене
 let rotT=0;function drawRotate(){rotT+=1/60;X.setTransform(DPR,0,0,DPR,0,0);const tb=IM.bg_title;if(okI(tb)){const k=Math.max(W/tb.naturalWidth,H/tb.naturalHeight)*1.06;X.save();X.filter='blur(4px) brightness(.85)';X.drawImage(tb,W/2-tb.naturalWidth*k/2+Math.sin(rotT*.3)*W*.02,H/2-tb.naturalHeight*k/2,tb.naturalWidth*k,tb.naturalHeight*k);X.restore()}
  const r=IM.rotate,d=Math.min(W*.8,H*.5);if(okI(r)){X.save();X.translate(W/2,H*.42);X.rotate(Math.sin(rotT*2)*.08);const w=d,h=d/aspect('rotate');X.drawImage(r,-w/2,-h/2,w,h);X.restore()}
- const bw=Math.min(W*.9,520),bh=bw/aspect('board');X.save();X.translate(W/2,H*.42+d/aspect('rotate')/2+bh*.7);sprW('board',0,0,bw);const fs=bw*.09;X.font=fs+'px '+FONT;X.textAlign='center';X.textBaseline='middle';X.lineWidth=5;X.strokeStyle='rgba(255,245,220,.9)';X.strokeText('Поверни телефон',0,0);X.fillStyle='#5a2a0a';X.fillText('Поверни телефон',0,0);X.restore()}
+ const bw=Math.min(W*.9,520),bh=bw/aspect('board');X.save();X.translate(W/2,H*.42+d/aspect('rotate')/2+bh*.7);sprW('board',0,0,bw);const fs=bw*.115;X.font=fs+'px '+FONT;X.textAlign='center';X.textBaseline='middle';X.lineJoin='round';X.lineWidth=7;X.strokeStyle='#3a1a06';X.strokeText('Поверни телефон',0,0);X.fillStyle='#fff6dc';X.fillText('Поверни телефон',0,0);X.restore()}
 // тестовый интерфейс
 Object.defineProperty(G,'scene',{get:()=>scene});G.go=(n,a)=>go(n,a);G.S=()=>SV;G.pg=(x,y)=>({x:OX+x*S+VVX,y:OY+y*S+VVY});G.btns=()=>UI.map(b=>({id:b.id,x:b.x,y:b.y,w:b.w,h:b.h,dis:!!b.dis}));G.fps=()=>fpsA;G.gnd=()=>({S,v:vis(),scene,items:GND,ground:gY()});
 G.Z=()=>ZS;G.talk=()=>talk;

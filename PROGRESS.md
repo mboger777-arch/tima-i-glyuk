@@ -4,9 +4,9 @@
 Арт-генерации: файлы появляются в /cursor/stores/store-f8d02424-1d41-4697-9393-3c21b26375b6/grok-bot/agents/*/attachments/ (по mtime) → refs/*.jpg
 - [x] концепт, refs heroes_v1/villain_v1/world_v1 (утверждены)
 - [x] арт: позы, UI, фоны зон, реквизит (refs/*.jpg)
-- [ ] нарезка (tools/cut.py, rbvenv)
+- [x] нарезка (tools/cut.py + tools/cut_boxes.py для многорядных листов, rbvenv); bubble/plank/sign3/sign4 — key-cut
 - [x] движок js/core.js, scenes.js, z1-z5.js, fin.js написаны (отладка в процессе)
-- [ ] зоны 1-5
+- [x] зоны 1-5 + финал: test_touch 0 fails ×3 размера, test_drag (CDP) ok
 - [ ] голос (Qwen + ASR)
 - [ ] тесты test_touch + audit, 3 размера
 - [ ] публикация
