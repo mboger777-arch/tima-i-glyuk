@@ -4,8 +4,8 @@ const Z5H=[{id:'get',lab:'Получать'},{id:'store',lab:'Хранить'},{
 const Z5C=[{k:'radio',s:'s_radio',a:'get',lab:'Слушаем новости'},{k:'album',s:'s_album',a:'store',lab:'Фото в альбом'},{k:'env',s:'s_envelope',a:'send',lab:'Письмо другу'},{k:'abacus',s:'s_abacus',a:'proc',lab:'Решаем пример'},
  {k:'tele',s:'s_telescope',a:'get',lab:'Смотрим на звёзды'},{k:'pigeon',s:'s_pigeon',a:'send',lab:'Голубь несёт письмо'},{k:'diary',s:'s_diary',a:'store',lab:'Пишем в дневник'},{k:'puzzle',s:'s_puzzle',a:'proc',lab:'Собираем картинку'}];
 const Z5FX={get:'bell',store:'clink',send:'rocket',proc:'gear'};
-function z5geo(){const P=lineup(6);const x0=P.x0,x1=P.x1,st=(x1-x0)/4,hh=Math.min(272,(st-8)/.79);return{x0,x1,cx:(x0+x1)/2,cy:300,houses:Z5H.map((h,i)=>({id:h.id,lab:h.lab,x:x0+st*(i+.5),y:gY()-hh/2,w:Math.min(st-6,260),h:hh+60,hh,pw:Math.min(st-4,250)}))}}
-SC.z5=Object.assign({},DRAGSC,{enter(){cast=[hero('tima',0,{side:'L'}),hero('klik',0,{side:'L',ov:.22,minW:1450}),hero('bit',0,{side:'R'})];const z=zoneStart(5,{i:-1,card:null,anim:{}});
+function z5geo(){const P=lineup(6);const x0=P.x0,x1=P.x1,st=(x1-x0)/4,hh=Math.min(272,(st-8)/.79);return{x0,x1,cx:(x0+x1)/2,cy:300,houses:Z5H.map((h,i)=>{const pw=Math.min(290,Math.max(st-4,st*1.5));const stag=pw>st-4&&i%2===1;return{id:h.id,lab:h.lab,x:x0+st*(i+.5),y:gY()-hh/2,w:Math.min(st-6,260),h:hh+60,hh,pw,stag}})}}
+SC.z5=Object.assign({},DRAGSC,{enter(){cast=[hero('tima',0,{side:'L'}),hero('klik',0,{riding:true}),hero('bit',0,{side:'R'})];const z=zoneStart(5,{i:-1,card:null,anim:{}});
   run(async()=>{await wait(300);await say('c1');GOAL='Перетащи картинку к нужному домику';SC.z5.next();await say('c2')})},
  prog(){return ZS.i},
  next(){const z=ZS;z.i++;if(z.i>=Z5C.length){z.card=null;GOAL='';winZone('c_win','g_z5');return}const d=Z5C[z.i],g=z5geo();
@@ -17,7 +17,7 @@ SC.z5=Object.assign({},DRAGSC,{enter(){cast=[hero('tima',0,{side:'L'}),hero('kli
  draw(){const z=ZS;bgDraw('memory');const g=z5geo();
   g.houses.forEach((h,i)=>{const a=z.anim[h.id]?T-z.anim[h.id]:9;let sx=1,sy=1,rot=0;if(a<.8){const u=a/.8;sy=1+Math.sin(u*Math.PI*3)*.06*(1-u);sx=1/sy;if(h.id==='proc')rot=Math.sin(u*30)*.03}
    X.save();X.translate(h.x,gY());X.rotate(rot);X.scale(sx,sy);spr('h_'+h.id,0,0,h.hh,{ay:1});X.restore();
-   const hl=DRG.drag||DRG.sel?1+Math.sin(T*6+i)*.03:1;const pw=h.pw,ph=pw/aspect('sign4');X.save();X.translate(h.x,gY()-ph/2-4);X.scale(hl,hl);plaque(h.lab,0,0,pw,{size:40,id:'house',sp:'sign4'});X.restore()});
+   const hl=DRG.drag||DRG.sel?1+Math.sin(T*6+i)*.03:1;const pw=h.pw,ph=pw/aspect('sign4');X.save();X.translate(h.x,gY()-ph/2-4-(h.stag?ph+8:0));X.scale(hl,hl);plaque(h.lab,0,0,pw,{size:40,id:'house',sp:'sign4'});X.restore()});
   drawCast();
   const o=z.card;if(o){stepItems();stepFly(o);const k=o.off?.7:1;selGlow(o,92);const bob=o.fly||o.lift?0:Math.sin(T*2.4)*4;
    X.save();X.translate(o.x,o.y+bob);X.scale(k*(o.lift?1.1:1),k*(o.lift?1.1:1));sprW('tile',0,0,170);spr(o.d.s,0,0,120);X.restore();

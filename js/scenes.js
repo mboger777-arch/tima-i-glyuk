@@ -70,10 +70,10 @@ SC.title={enter(){cast=[hero('tima',0),hero('klik',0),hero('bit',0)];},
   // Глюк выглядывает у монитора на столе
   {const[x0,y0]=bgXY(945,78),[x1,y1]=bgXY(1170,250);const cyc=(T%4.5)/4.5,up=clamp(Math.min(cyc/.15,(1-cyc)/.15),0,1);const e=ease(up);
    X.save();X.beginPath();X.roundRect(x0,y0,x1-x0,y1-y0,18);X.clip();const gh=(y1-y0)*1.05;spr(cyc<.5?'glyuk_laugh':'glyuk',(x0+x1)/2+Math.sin(T*1.3)*20,y1+gh*.55-e*gh*.62,gh,{ay:1});X.restore()}
-  const lw=Math.min(500,v.w*.36),lh=lw/aspect('screen'),lx=(cast[1].x+hw(cast[1])/2+cast[2].x-hw(cast[2])/2)/2,ly=safeT()+lh/2;
+  const gapW=(cast[2].x-hw(cast[2])*.4)-(cast[1].x+hw(cast[1])/2);const lw=Math.min(560,v.w*.44,gapW-10),lh=lw/aspect('screen'),lx=(cast[1].x+hw(cast[1])/2+cast[2].x-hw(cast[2])*.4)/2,ly=safeT()+lh/2;
   X.save();X.translate(lx,ly);X.rotate(Math.sin(T*1.1)*.01);sprW('screen',0,0,lw);X.restore();
   textIn('Тима и Глюк',lx,ly-lh*.12,lw*.66,lh*.3,80,'#fff6dc',{f:FONT,st:'#0a2a6a',lw:9,id:'logo'});
-  textIn('путешествие внутрь компьютера',lx,ly+lh*.17,lw*.64,lh*.22,40,'#ffe27a',{f:FONT,st:'#0a2a6a',lw:6,id:'logo2'});SC.title.lx=lx;SC.title.ly=ly+lh/2},
+  textIn('путешествие внутрь компьютера',lx,ly+lh*.17,lw*.7,lh*.27,44,'#ffe27a',{f:FONT,st:'#0a2a6a',lw:6,id:'logo2'});SC.title.lx=lx;SC.title.ly=ly+lh/2},
  ui(){const lx=SC.title.lx||640;boardBtn('play',lx,Math.min(safeB()-80,SC.title.ly+100),380,'Играть',()=>{if(!SV.intro)go('intro');else go('map')},{pulse:1,size:72});
   btn('sound','b_sound',safeR()-44,safeT()+42,84,()=>{G.mute=!G.mute;if(G.mute)stopTalk()},{always:1});if(G.mute){X.save();X.strokeStyle='#d0202a';X.lineWidth=9;X.lineCap='round';const x=safeR()-44,y=safeT()+42;X.beginPath();X.moveTo(x-30,y-30);X.lineTo(x+30,y+30);X.stroke();X.restore()}}};
 // ---- вступление ----

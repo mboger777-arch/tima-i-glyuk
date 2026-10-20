@@ -1,0 +1,34 @@
+jobs 6
+/bin/sh: 1: sox: not found
+SoX could not be found!
+
+    If you do not have SoX, proceed here:
+     - - - http://sox.sourceforge.net/ - - -
+
+    If you do (or think that you should) have SoX, double-check your
+    path variables.
+    
+
+********
+Warning: flash-attn is not installed. Will only run the manual PyTorch version. Please install flash-attn for faster inference.
+********
+ 
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 2629.66it/s]
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+0 m_fin 0.0  Все звезды собраны, скорее на экран, там прячется глюк.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+1 r2 0.111  куда вести устройство, нажми на ввод или на вывод.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+2 r3 0.0  А теперь проведем информацию по всей дороге, сначала ввод, потом процессор, потом вывод.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+3 t_bad_in 0.0  Это не подходит.  Выбери другое устройство для ввода.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+4 t_bad_out 0.0  Это не подходит, выбери другое устройство для вывода.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+5 f2 0.0  Попался. Теперь включим антивирус. Ответь на три вопроса.
+manifest 123
+VOICEDONE
