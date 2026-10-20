@@ -5,7 +5,7 @@ URL=os.environ.get('URL','http://127.0.0.1:18691/index.html')
 VPS=[(844,390),(667,375),(932,430)]
 if os.environ.get('VPS'):VPS=[tuple(map(int,v.split('x'))) for v in os.environ['VPS'].split(',')]
 STATES=[('title',''),('intro',''),('map',''),('z1','G.fast=true'),('z1','SC.z1.next&&ZS.i<0&&SC.z1.next()'),('z2','G.fast=true'),('z2','ZS.wave<0&&SC.z2.wave()'),('z2','SC.z2.phaseB()'),
- ('z3','G.fast=true'),('z3','ZS.items||SC.z3.layout()'),('z4','G.fast=true'),('z4','SC.z4.phaseB()'),('z5','G.fast=true'),('fin','G.fast=true'),('fin','ZS.ph=2;ZS.q=-1;SC.fin.quiz()'),('fin','SC.fin.vac()'),('fin','ZS.medal=T;ZS.kind=1;cast.push(hero("glyuk",0))')]
+ ('z3','G.fast=true'),('z3','ZS.items||SC.z3.layout()'),('z4','G.fast=true'),('z4','SC.z4.phaseB()'),('z5','G.fast=true'),('fin','G.fast=true'),('fin','ZS.ph=2;ZS.q=-1;SC.fin.quiz()'),('fin','SC.fin.vac()'),('fin','ZS.ph=4;GOAL="";ZS.medal=T;ZS.kind=1;cast.push(hero("glyuk",0))')]
 async def main():
   F=[];N=0
   async with async_playwright() as p:
