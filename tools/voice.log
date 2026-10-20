@@ -142,3 +142,20 @@ Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 46 l5 0.0  Положи в хранилище только носители, то на чём можно записать и сохранить информацию.
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+47 lc_book 0.0  Да, книга хранит сказки и рассказы.
+manifest 48
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+48 lc_flash 0.0  Да, флешка хранит фото и файлы.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+49 lc_disc 0.0  Да, на диске хранят музыку и мультики.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+50 lc_note 0.0  Да, в тетради мы записываем слова и примеры.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+51 lc_no 0.0  Хи-хи! На этом ничего не запишешь! Это не носитель!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+52 l_win 0.0  Отлично! Книга, флешка, диск и тетрадь хранят информацию.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+53 g_z2 0.0  Опять порядок?  Ну ничего, я разберу компьютер на детали.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+54 w1 0.0  Ой, Глюк разобрал компьютер на детали.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.

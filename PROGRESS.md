@@ -11,3 +11,4 @@
 - [ ] тесты test_touch + audit, 3 размера
 - [ ] публикация
 - репо создан: github.com/mboger777-arch/tima-i-glyuk, Pages включены. Голос: OOM если запускать вместе с cut.py — запускать по очереди (NT=6 /home/box/tts/qw/bin/python tools/voicegen.py)
+- 22:40 прерывание; голос идёт (tools/voice_asr.jsonl, 47/123). После голоса: voice_verify (WM=medium), тесты ×3, live-check, финальный отчёт.
