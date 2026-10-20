@@ -24,7 +24,7 @@ setInterval(()=>{const[w,h]=vpWH();if(w!==_lastW||h!==_lastH||PORTRAIT()!==_wasP
 const IM={};function img(n,src){const i=new Image();i.src=src;IM[n]=i;return i}
 const okI=i=>i&&i.complete&&i.naturalWidth>0;
 ['title','map','senses','library','workshop','rail','memory','screen'].forEach(n=>img('bg_'+n,'assets/bg/'+n+'.jpg'));
-['tima','tima_cheer','tima_point','tima_think','bit','bit_cheer','bit_point','bit_wow','klik','klik_wave','klik_jump','glyuk','glyuk_kind','glyuk_laugh','glyuk_angry','glyuk_sad'].forEach(n=>img(n,'assets/sprites/'+n+'.png'));
+['tima','tima_cheer','tima_point','tima_think','bit','bit_cheer','bit_point','bit_wow','klik','klik_wave','klik_jump','glyuk','glyuk_kind','glyuk_laugh','glyuk_angry','glyuk_sad','tima_blink','bit_blink','klik_blink','glyuk_blink','glyuk_kind_blink','glyuk_angry_blink'].forEach(n=>img(n,'assets/sprites/'+n+'.png'));
 ['b_ok','b_undo','b_home','b_sound','b_next','board','bubble','tile','star','lock','rotate','screen','medal','bell','drum','rose','perfume','lemon','lollipop','hedgehog','teddy','rainbow','traffic','g_eye','g_ear','g_nose','g_mouth','g_hand','ch_text','ch_num','ch_sound','ch_pic','c_book','c_flash','c_disc','c_note','c_photo','n_apple','n_ball','n_sock','n_cup','n_carrot','monitor','sysunit','keyboard','mouse','speakers','printer','mic','scanner','webcam','joystick','headphones','projector','loco','wagon','sphere','h_get','h_store','h_send','h_proc','s_radio','s_telescope','s_album','s_diary','s_envelope','s_pigeon','s_puzzle','s_abacus','vacuum','pixels','trophy','infocube','notes','painting','shadow','plank','sign3','sign4'].forEach(n=>img(n,'assets/ui/'+n+'.png'));
 const FONT='FairyLogo, Georgia, serif',BODY='Pangolin, "Comic Sans MS", sans-serif',NUM='NunitoLogo, Arial Black, sans-serif';
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),rnd=(a,b)=>a+Math.random()*(b-a),ease=t=>t<0?0:t>1?1:1-Math.pow(1-t,3),lerp=(a,b,t)=>a+(b-a)*t;
@@ -43,7 +43,11 @@ const SFX={ok(){[1046,1318,1568,2093].forEach((f,i)=>tone(f,.5,'sine',.08,i*.07)
  boost(){tone(300,.6,'sawtooth',.05,0,1200);noise(.6,.12,1800)},bump(){noise(.2,.4,300);tone(110,.2,'square',.06,0,60)},coin(){tone(1975,.08,'square',.04);tone(2637,.25,'square',.04,.07)},
  pour(){noise(.7,.15,500)},blip(){tone(880,.06,'sine',.06)},
  melody(){[523,659,784,1046,784,659].forEach((f,i)=>tone(f,.28,'triangle',.07,i*.16))},drum(){[0,.18,.36].forEach(w=>{noise(.15,.4,180,w);tone(90,.15,'sine',.12,w,50)})},bell(){tone(1568,1,'sine',.08);tone(2350,.8,'sine',.04,.01)},
- suck(){noise(1.2,.18,400);tone(200,1.2,'sawtooth',.03,0,900)},train(){[0,.25,.5,.75].forEach(w=>noise(.12,.25,600,w));tone(700,.4,'square',.03,.9,650)},rocket(){noise(1,.25,900);tone(200,1,'sawtooth',.04,0,1500)},gear(){[0,.1,.2,.3,.4].forEach(w=>tone(300,.05,'square',.04,w))},squeak(){tone(1800,.12,'sine',.08,0,2600)}};
+ suck(){noise(1.2,.18,400);tone(200,1.2,'sawtooth',.03,0,900)},train(){[0,.25,.5,.75].forEach(w=>noise(.12,.25,600,w));tone(700,.4,'square',.03,.9,650)},rocket(){noise(1,.25,900);tone(200,1,'sawtooth',.04,0,1500)},gear(){[0,.1,.2,.3,.4].forEach(w=>tone(300,.05,'square',.04,w))},squeak(){tone(1800,.12,'sine',.08,0,2600)},
+ grumble(){tone(150,.35,'sawtooth',.05,0,110);tone(120,.4,'sawtooth',.04,.12,90);noise(.3,.08,250,.05)},
+ giggle(){[0,.1,.2].forEach((w,i)=>tone(700+i*160,.08,'square',.035,w,900+i*160))},
+ yay(){[784,988,1175,1568].forEach((f,i)=>tone(f,.25,'triangle',.06,i*.06));noise(.3,.05,3000,.1)},
+ zip(){tone(400,.5,'sine',.07,0,2400);noise(.4,.08,2500)}};
 // ---- голос и реплики; корутины уровня обрываются при смене сцены (GEN) ----
 const G={_busy:0,fast:false,mute:false};let talk=null,skipTalk=null,GEN=0;
 const STALE={stale:1};
@@ -113,28 +117,35 @@ function boardBtn(id,x,y,w,label,fn,o){o=o||{};const h=w/aspect('board');UI.push
  X.save();X.translate(x,y);X.scale(k,k);textIn(label,0,0,w*.78,h*.56,o.size||60,'#fff6dc',{f:FONT,st:'#3a1a06',lw:7,id});X.restore()}
 // ---- герои: позы, дыхание (только равномерный масштаб), прыжки на землю, взгляд на ребёнка ----
 let cast=[];
-const HEROH={tima:420,bit:400,klik:230,glyuk:330};
+const HEROH={tima:410,bit:380,klik:235,glyuk:300};
+// доля ширины спрайта, которую герой «занимает» в раскладке (руки Бита могут нависать над краем поля)
+const LWK={bit:.8,glyuk:.8,klik:.8};
 const NAMES={tima:'Тима',bit:'Бит',klik:'Клик',glyuk:'Глюк',narrator:''};
 function hero(n,x,o){o=o||{};return Object.assign({n,x,pose:'',h:HEROH[n]||400,jump:0,wob:0,flip:false,ph:Math.random()*6},o)}
 function pose(n,p,dur){const c=cast.find(c=>c.n===n);if(c){c.pose=p;c.poseT=dur?T+dur:0;c.pf=T}}
 function cheer(){cast.forEach((c,i)=>{c.jump=T+i*.1;if(IM[c.n+'_cheer'])pose(c.n,'cheer',1.6)});SFX.ok()}
 function hop(n){const c=cast.find(c=>c.n===n);if(c)c.jump=T}
 function oops(n){const c=cast.find(c=>c.n===n);if(c)c.wob=T}
-function spriteOf(c){if(c.poseT&&T>c.poseT){c.pose='';c.poseT=0}const k=c.pose?c.n+'_'+c.pose:c.n;return okI(IM[k])?k:c.n}
+function spriteOf(c){if(c.poseT&&T>c.poseT){c.pose='';c.poseT=0}const k=c.pose?c.n+'_'+c.pose:(c.base?c.n+'_'+c.base:c.n);return okI(IM[k])?k:c.n}
 const POSEK={tima_cheer:1.1,klik_jump:1.05};
-function drawHero(c){const k=spriteOf(c),im=IM[k];if(!okI(im))return;const h=c.h*(c.k||1)*(POSEK[k]||1),w=h*im.naturalWidth/im.naturalHeight;
+// моргание: раз в 2.5–5 с, иногда двойное; кадр _blink того же размера
+function blinkK(c,k){if(c.nb==null)c.nb=T+1+Math.random()*3;if(T>c.nb+.14){c.nb=T+2.5+Math.random()*2.5;c.db=Math.random()<.25}
+ const b=(T>c.nb&&T<c.nb+.13)||(c.db&&T>c.nb-.3&&T<c.nb-.18);return b&&okI(IM[k+'_blink'])?k+'_blink':k}
+function drawHero(c){const k0=spriteOf(c),k=blinkK(c,k0),im=IM[k];if(!okI(im))return;const h=c.h*(c.k||1)*(POSEK[k]||1),w=h*im.naturalWidth/im.naturalHeight;
  const talking=talk&&talk.who===c.n;const br=1+Math.sin(T*2.1+c.ph)*.007;let dy=0,rot=Math.sin(T*1.2+c.ph)*.012;
  if(talking)dy-=Math.abs(Math.sin((T-talk.t0)*4.2))*5;// говорит — лёгкое покачивание
  if(c.jump&&T>c.jump&&T-c.jump<.7){const u=(T-c.jump)/.7;dy-=Math.sin(u*Math.PI)*60}
  if(c.wob&&T-c.wob<.9){rot+=Math.sin((T-c.wob)*18)*.05*(1-(T-c.wob)/.9)}
  const y=c.y;GND.push({n:c.n,hero:1,x:c.x,feet:y,gl:y,w:w*br,h:h*br,ar:im.naturalWidth/im.naturalHeight,src:k});
  X.save();X.translate(c.x,y);const sh=IM.shadow;if(okI(sh)){X.globalAlpha=.5*(1-Math.min(.5,-dy/120));X.drawImage(sh,-w*.42,-w*.05,w*.84,w*.11);X.globalAlpha=1}
- X.translate(0,dy);X.rotate(rot);X.scale(br*(c.flip?-1:1),br);
+ X.translate(0,dy);if(c.spin){X.translate(0,-h/2);X.rotate(c.spin);X.translate(0,h/2)}X.rotate(rot);X.scale(br*(c.flip?-1:1),br);
  const pf=c.pf&&T-c.pf<.18?(T-c.pf)/.18:1;X.globalAlpha=pf<1?.6+.4*pf:1;X.drawImage(im,-w/2,-h,w,h);X.globalAlpha=1;X.restore();
  if(AUD)AUD.h.push({n:c.n,b:[c.x-w/2,y-h+dy,c.x+w/2,y+dy]})}
+function heroBW(c){const k=c.base?c.n+'_'+c.base:c.n,i=IM[okI(IM[k])?k:c.n];return okI(i)?c.h*(c.k||1)*i.naturalWidth/i.naturalHeight:c.h*.5}
+function heroLW(c){return heroBW(c)*(LWK[c.n]||1)}
 function heroX(c){const i=IM[spriteOf(c)];const w=okI(i)?c.h*(c.k||1)*i.naturalWidth/i.naturalHeight:c.h*.5;return w}
-function drawCast(){const v=vis();cast.forEach(c=>{c.y=c.gy!=null?c.gy:gY();const hw=heroX(c)/2;c.dx=clamp(c.x,safeL()+hw,safeR()-hw)});
- cast.forEach(c=>{const ox=c.x;c.x=c.dx;drawHero(c);c.x=ox})}
+function drawCast(){const v=vis();cast.forEach(c=>{if(c.hide){c.dx=null;return}c.y=c.gy!=null?c.gy:gY();const hw=heroX(c)/2;c.dx=clamp(c.x,safeL()+hw,safeR()-hw)});
+ cast.filter(c=>!c.hide).sort((a,b)=>(a.z||0)-(b.z||0)).forEach(c=>{const ox=c.x;c.x=c.dx;drawHero(c);c.x=ox})}
 // якоря героев по краям видимой области
 const LEFT=k=>safeL()+(k||0),RIGHT=k=>safeR()-(k||0);
 // ---- облачко речи у говорящего героя; иначе — доска с заданием ----

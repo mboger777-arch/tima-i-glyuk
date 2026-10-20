@@ -3,25 +3,25 @@
 const Z4D=[{id:'keyboard',io:'in'},{id:'monitor',io:'out'},{id:'mic',io:'in'},{id:'speakers',io:'out'},{id:'printer',io:'out'},{id:'scanner',io:'in'},{id:'headphones',io:'out'},{id:'webcam',io:'in'}];
 const Z4T=[{k:'t_song',goal:'Спеть песенку и послушать',i:'mic',o:'speakers'},{k:'t_letter',goal:'Написать письмо и напечатать',i:'keyboard',o:'printer'},{k:'t_photo',goal:'Снять себя и посмотреть',i:'webcam',o:'monitor'}];
 const Z4IN=['keyboard','mic','webcam'],Z4OUT=['monitor','speakers','printer'];
-function z4geo(){const x0=safeL()+heroX(cast[0])+20,x1=safeR()-20;const cx=(x0+x1)/2;const[px,py]=bgXY(640,300);
+function z4geo(){const P=lineup(16);const x0=P.x0,x1=P.x1;const cx=(x0+x1)/2;const[px,py]=bgXY(640,300);
  return{x0,x1,cx,sin:{x:x0+130,y:430},sout:{x:x1-130,y:430},ty:gY()-60,px,py:Math.min(py,330)}}
-SC.z4=Object.assign({},DRAGSC,{enter(){cast=[hero('tima',0,{h:360})];const z=zoneStart(4,{ph:0,i:-1,cur:null,pile:{in:[],out:[]},task:-1,si:null,so:null,run:null});
+SC.z4=Object.assign({},DRAGSC,{enter(){cast=[hero('tima',0,{side:'L'}),hero('bit',0,{side:'R'})];const z=zoneStart(4,{ph:0,i:-1,cur:null,pile:{in:[],out:[]},task:-1,si:null,so:null,run:null});
   run(async()=>{await wait(300);await say('r1');GOAL='Куда отвезти: ввод или вывод?';SC.z4.next();await say('r2')})},
  prog(){return ZS.ph*100+(ZS.ph?ZS.task:ZS.i)},
  next(){const z=ZS;z.i++;if(z.i>=Z4D.length){z.cur=null;SC.z4.phaseB();return}const d=Z4D[z.i],g=z4geo();
   const o={id:d.id,d,x:-999,y:0,hx:0,hy:0,r:80};z.cur=o;z.train={from:vis().x0-260,to:g.cx,t0:T,d:1.1,x:vis().x0-260};SFX.train();
   dragReset([o],[{id:'in',x:g.sin.x,y:g.sin.y+60,w:260,h:400},{id:'out',x:g.sout.x,y:g.sout.y+60,w:260,h:400}],(o,t)=>SC.z4.pick(t.id))},
  pick(io){const z=ZS,o=z.cur;if(!o||z.lock||z.ph!==0||!z.train||!z.train.stop)return false;if(o.d.io===io){const g=z4geo(),s=io==='in'?g.sin:g.sout;o.off=1;flyTo(o,s.x,gY()-110,.45);z.lock=true;SFX.pop();
-   run(async()=>{await wait(460);z.pile[io].push(o.id);z.cur=null;burst(s.x,s.y,30,'spark',io==='in'?120:30);SFX.ok();hop('tima');z.lock=false;z.train={from:z.train.x,to:vis().x0+vis().w+300,t0:T,d:.9,x:z.train.x};SFX.train();await sayNow('r_'+o.id);await wait(200);if(ZS===z&&z.ph===0)SC.z4.next()});return true}
-  mistake();oops('tima');pose('tima','think',2);sayNow(o.d.io==='in'?'r_in':'r_out');return false},
+   run(async()=>{await wait(460);z.pile[io].push(o.id);z.cur=null;burst(s.x,s.y,30,'spark',io==='in'?120:30);react(true,s.x,gY()-140);z.lock=false;z.train={from:z.train.x,to:vis().x0+vis().w+300,t0:T,d:.9,x:z.train.x};SFX.train();await sayNow('r_'+o.id);await wait(200);if(ZS===z&&z.ph===0)SC.z4.next()});return true}
+  mistake();sayNow(o.d.io==='in'?'r_in':'r_out');return false},
  phaseB(){const z=ZS;z.ph=1;GOAL='';dragReset([],[],()=>false);run(async()=>{await say('r3');SC.z4.task()})},
  task(){const z=ZS;z.task++;z.si=null;z.so=null;if(z.task>=Z4T.length){GOAL='';winZone('r_win','g_z4');return}const t=Z4T[z.task];GOAL=t.goal;
   run(async()=>{await say(t.k);await say('t_pick')})},
  choose(side,id){const z=ZS,t=Z4T[z.task];if(!t||z.lock)return;
   if(side==='in'){if(id===t.i){z.si=id;SFX.pop()}else{z.si=null;mistake();sayNow('t_bad_in');return}}
   else{if(id===t.o){z.so=id;SFX.pop()}else{z.so=null;mistake();sayNow('t_bad_out');return}}
-  if(z.si&&z.so){z.lock=true;z.run={t0:T};SFX.train();run(async()=>{await wait(G.fast?40:2400);z.run=null;cheer();await say('t_ok');z.lock=false;SC.z4.task()})}},
- draw(){const z=ZS;bgDraw('rail');const g=z4geo();cast[0].x=safeL()+heroX(cast[0])/2;
+  if(z.si&&z.so){z.lock=true;z.run={t0:T};SFX.train();run(async()=>{await wait(G.fast?40:2400);z.run=null;const g2=z4geo();react(true,g2.x1-120,322+Z4OUT.indexOf(t.o)*126);burst(g2.x1-120,322+Z4OUT.indexOf(t.o)*126,40,'conf',null,.9);await say('t_ok');z.lock=false;SC.z4.task()})}},
+ draw(){const z=ZS;bgDraw('rail');const g=z4geo();
   plaque('Процессор',g.px,g.py+20,260,{size:40,id:'cpu'});
   if(z.ph===0){
    for(const [io,s,lab] of [['in',g.sin,'Ввод'],['out',g.sout,'Вывод']]){const sel=DRG.sel||DRG.drag;const pu=sel?1+Math.sin(T*6)*.03:1;
