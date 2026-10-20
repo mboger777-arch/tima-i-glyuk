@@ -222,3 +222,75 @@ Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 78 r3 0.1  А теперь проведем информацию по всей дороге.  Вот процессор вывод.
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+79 t_song 0.0  Я спою песенку, а компьютер пусть её сыграет.
+manifest 80
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+80 t_letter 0.0  Я напишу письмо и напечатаю его на бумаге.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+81 t_photo 0.0  Сними себя на камеру и посмотри на экране.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+82 t_pick 0.167  Выбери, чем вести и чем вывести.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+83 t_ok 0.0  Процессор обработал информацию.  Всё работает.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+84 t_bad_in 0.286  Это не подходит. Выбери другое устройство в вода.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+85 t_bad_out 0.0  Это не подходит.  Выбери другое устройство вывода.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+86 r_win 0.0  Ура! Информация вошла, обработалась и вышла.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+87 g_z4 0.0  Ну и ладно, спрячусь в городе памяти.
+manifest 88
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+88 c1 0.0  Город памяти. С информацией делают четыре дела, получают, хранят, передают и обрабатывают.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+89 c2 0.0  Перетащи картинку к домику, который делает это дело.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+90 c_radio 0.0  Слушаем новости по радио!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+91 c_tele 0.0  Смотрим на звезды в телескоп.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+92 c_album 0.0  кладём фото в альбом
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+93 c_diary 0.0  Записываем в дневник.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+94 c_env 0.0  Отправляем письмо другу.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+95 c_pigeon 0.0  Голубь несет письмо
+manifest 96
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+96 c_puzzle 0.0  Собираем картинку из кусочков.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+97 c_abacus 0.0  Решаем пример на счетах.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+98 o_get 0.0  Да, мы получаем информацию.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+99 o_store 0.0  Да, мы храним информацию.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+100 o_send 0.0  Да, мы передаем информацию.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+101 o_proc 0.0  Да, мы обрабатываем информацию.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+102 hh_get 0.0  Тут мы узнаем новое.  Ищи домик с большим ухом.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+103 hh_store 0.222  Тут мы сохраняем напотом, ищи домик с замком.
+manifest 104
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+104 hh_send 0.0  Тут информация летит к другому. Ищи домик с ракетой.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+105 hh_proc 0.0  Тут мы думаем и меняем информацию, ищи домик с шестеренками.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+106 c_win 0.0  Здорово! Получать, хранить, передавать, обрабатывать! Ты всё знаешь!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+107 g_z5 0.0  Ой, тогда я убегу на экран. Догоните, если сможете.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
