@@ -1,0 +1,127 @@
+{
+ "tima": {
+  "w": 422,
+  "h": 835,
+  "edge": false
+ },
+ "bit": {
+  "w": 618,
+  "h": 814,
+  "edge": false
+ },
+ "klik": {
+  "w": 641,
+  "h": 794,
+  "edge": false
+ },
+ "glyuk": {
+  "w": 748,
+  "h": 811,
+  "edge": false
+ },
+ "glyuk_kind": {
+  "w": 737,
+  "h": 803,
+  "edge": false
+ },
+ "glyuk_laugh": {
+  "w": 555,
+  "h": 794,
+  "edge": false
+ },
+ "glyuk_angry": {
+  "w": 563,
+  "h": 794,
+  "edge": false
+ },
+ "glyuk_sad": {
+  "w": 517,
+  "h": 786,
+  "edge": false
+ },
+ "b_ok": {
+  "w": 684,
+  "h": 692,
+  "edge": false
+ },
+ "b_undo": {
+  "w": 681,
+  "h": 693,
+  "edge": false
+ },
+ "b_home": {
+  "w": 680,
+  "h": 693,
+  "edge": false
+ },
+ "b_sound": {
+  "w": 679,
+  "h": 692,
+  "edge": false
+ },
+ "b_next": {
+  "w": 680,
+  "h": 693,
+  "edge": false
+ },
+ "board": {
+  "w": 801,
+  "h": 399,
+  "edge": false
+ },
+ "bubble": {
+  "w": 686,
+  "h": 643,
+  "edge": false
+ },
+ "tile": {
+  "w": 671,
+  "h": 681,
+  "edge": false
+ },
+ "star": {
+  "w": 641,
+  "h": 644,
+  "edge": false
+ },
+ "lock": {
+  "w": 476,
+  "h": 689,
+  "edge": false
+ },
+ "rotate": {
+  "w": 599,
+  "h": 714,
+  "edge": false
+ },
+ "screen": {
+  "w": 802,
+  "h": 664,
+  "edge": false
+ },
+ "medal": {
+  "w": 397,
+  "h": 700,
+  "edge": false
+ },
+ "ch_text": {
+  "w": 526,
+  "h": 700,
+  "edge": false
+ },
+ "ch_num": {
+  "w": 516,
+  "h": 700,
+  "edge": false
+ },
+ "ch_sound": {
+  "w": 500,
+  "h": 700,
+  "edge": false
+ },
+ "ch_pic": {
+  "w": 508,
+  "h": 700,
+  "edge": false
+ }
+}
