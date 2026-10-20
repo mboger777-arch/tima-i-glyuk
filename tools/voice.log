@@ -294,3 +294,38 @@ Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 107 g_z5 0.0  Ой, тогда я убегу на экран. Догоните, если сможете.
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+108 f1 0.0  Глюк на экране, лови его, нажимай на него скорее.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+109 f_hit1 0.0  Ай!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+110 f_hit2 0.0  Ой, ой!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+111 f_hit3 0.0  Не поймаешь?
+manifest 112
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+112 f2 0.0  Попался!  Теперь включим антивирус.  Ответь на три вопроса пароля.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+113 q1 0.0  Первый вопрос. Чем мы слышим?
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+114 q2 0.0  Второй вопрос. Что показывает картинку?
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+115 q3 0.0  Третий вопрос – на чём хранят информацию?
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+116 q_ok 0.0  Верно.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+117 q_no 0.0  Не то. Попробуй ещё.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+118 f3 0.0  Пароль принят! Перетащи антивирус к Глюку!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+119 f4 0.0  Ой, щекотно! Ой, я чистый! Простите меня, я больше не буду путать!
+manifest 120
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+120 f5 0.0  компьютер снова работает  ты настоящий знаток информации
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+121 f6 0.0  Пи-пи! Держи медаль!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+122 f7 0.0  Спасибо, друзья! Глюк, оставайся с нами, будешь помогать!
+manifest 123
+VOICEDONE
