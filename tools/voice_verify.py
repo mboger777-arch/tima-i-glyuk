@@ -10,6 +10,6 @@ for o in json.load(open(R+'/tools/lines.json')):
   if only and o['k'] not in only:continue
   t=g['spoken'](o);h=hashlib.sha1(f"i500|{o['who']}|{t}".encode()).hexdigest()[:8];f=f"{R}/assets/voice/{o['k']}_{h}.mp3"
   if not os.path.exists(f):continue
-  hyp=' '.join(s.text for s in A.transcribe(L(f),language='ru',beam_size=5)[0])
+  hyp=' '.join(s.text for s in A.transcribe(L(f),language='ru',beam_size=5,vad_filter=True,condition_on_previous_text=False)[0])
   e=min(g['wer'](g['norm'](t),g['norm'](hyp)),g['numwer'](o['t'],t,hyp));d={'k':o['k'],'wer':round(e,3),'say':t,'hyp':hyp.strip()};out.append(d);print(json.dumps(d,ensure_ascii=False),flush=True)
 json.dump(out,open(R+'/tools/voice_verify.json','w'),ensure_ascii=False,indent=0)
