@@ -123,5 +123,90 @@
   "w": 508,
   "h": 700,
   "edge": false
+ },
+ "c_book": {
+  "w": 672,
+  "h": 700,
+  "edge": false
+ },
+ "c_flash": {
+  "w": 473,
+  "h": 611,
+  "edge": false
+ },
+ "c_disc": {
+  "w": 658,
+  "h": 657,
+  "edge": false
+ },
+ "c_note": {
+  "w": 615,
+  "h": 684,
+  "edge": false
+ },
+ "c_photo": {
+  "w": 606,
+  "h": 696,
+  "edge": false
+ },
+ "n_apple": {
+  "w": 576,
+  "h": 660,
+  "edge": false
+ },
+ "n_ball": {
+  "w": 635,
+  "h": 649,
+  "edge": false
+ },
+ "n_sock": {
+  "w": 537,
+  "h": 700,
+  "edge": false
+ },
+ "n_cup": {
+  "w": 672,
+  "h": 579,
+  "edge": false
+ },
+ "n_carrot": {
+  "w": 610,
+  "h": 700,
+  "edge": false
+ },
+ "monitor": {
+  "w": 693,
+  "h": 661,
+  "edge": false
+ },
+ "sysunit": {
+  "w": 546,
+  "h": 696,
+  "edge": false
+ },
+ "keyboard": {
+  "w": 750,
+  "h": 358,
+  "edge": false
+ },
+ "mouse": {
+  "w": 636,
+  "h": 511,
+  "edge": false
+ },
+ "speakers": {
+  "w": 700,
+  "h": 538,
+  "edge": false
+ },
+ "printer": {
+  "w": 700,
+  "h": 601,
+  "edge": false
+ },
+ "mic": {
+  "w": 309,
+  "h": 700,
+  "edge": false
  }
 }

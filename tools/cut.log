@@ -33,3 +33,18 @@ carriers c_disc (658, 657)
 carriers c_note (615, 684) 
 carriers c_photo (606, 696) 
 carriers n_apple (576, 660) 
+carriers n_ball (635, 649) 
+carriers n_sock (537, 700) 
+carriers n_cup (672, 579) 
+carriers n_carrot (610, 700) 
+parts monitor (693, 661) 
+parts sysunit (546, 696) 
+parts keyboard (750, 358) 
+parts mouse (636, 511) 
+parts speakers (700, 538) 
+parts printer (700, 601) 
+parts mic (309, 700) 
+!! devices2 found 5 need 8 [(379, 60, 549, 285), (560, 31, 976, 298), (983, 88, 1265, 300), (24, 10, 858, 673), (887, 319, 1208, 640)]
+!! action_houses found 1 need 4 [(0, 55, 1280, 602)]
+!! situations found 6 need 8 [(82, 56, 394, 325), (397, 17, 668, 360), (673, 23, 965, 341), (976, 40, 1249, 351), (16, 343, 953, 660), (946, 354, 1268, 678)]
+!! misc found 7 need 6 [(46, 22, 444, 377), (486, 27, 832, 338), (885, 27, 1216, 353), (96, 377, 372, 665), (491, 377, 670, 621), (622, 422, 800, 638), (867, 364, 1209, 683)]

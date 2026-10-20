@@ -21,7 +21,7 @@ SHEETS={
  'heroes_v1':('sprites',['tima','bit','klik']),'tima_poses':('sprites',['tima_cheer','tima_point','tima_think','_x1','_x2']),
  'bit_klik_poses':('sprites',['bit_cheer','bit_point','bit_wow','klik_jump','klik_wave']),
  'villain_v1':('sprites',['glyuk','glyuk_kind']),'glyuk_poses':('sprites',['glyuk_laugh','glyuk_angry','glyuk_sad']),
- 'ui_sheet':('ui',['b_ok','b_undo','b_home','b_sound','b_next','board','bubble','tile','star','lock']),
+ 'ui_sheet':('ui',['b_ok','b_undo','b_home','b_sound','b_next','board','_bubble','tile','star','lock']),
  'ui_sheet2':('ui',['rotate','screen','medal']),
  'senses_items':('ui',['bell','drum','rose','perfume','lemon','lollipop','hedgehog','teddy','rainbow','traffic']),
  'gates':('ui',['g_eye','g_ear','g_nose','g_mouth','g_hand']),

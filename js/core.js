@@ -25,7 +25,7 @@ const IM={};function img(n,src){const i=new Image();i.src=src;IM[n]=i;return i}
 const okI=i=>i&&i.complete&&i.naturalWidth>0;
 ['title','map','senses','library','workshop','rail','memory','screen'].forEach(n=>img('bg_'+n,'assets/bg/'+n+'.jpg'));
 ['tima','tima_cheer','tima_point','tima_think','bit','bit_cheer','bit_point','bit_wow','klik','klik_wave','klik_jump','glyuk','glyuk_kind','glyuk_laugh','glyuk_angry','glyuk_sad'].forEach(n=>img(n,'assets/sprites/'+n+'.png'));
-['b_ok','b_undo','b_home','b_sound','b_next','board','bubble','tile','star','lock','rotate','screen','medal','bell','drum','rose','perfume','lemon','lollipop','hedgehog','teddy','rainbow','traffic','g_eye','g_ear','g_nose','g_mouth','g_hand','ch_text','ch_num','ch_sound','ch_pic','c_book','c_flash','c_disc','c_note','c_photo','n_apple','n_ball','n_sock','n_cup','n_carrot','monitor','sysunit','keyboard','mouse','speakers','printer','mic','scanner','webcam','joystick','headphones','projector','loco','wagon','sphere','h_get','h_store','h_send','h_proc','s_radio','s_telescope','s_album','s_diary','s_envelope','s_pigeon','s_puzzle','s_abacus','vacuum','pixels','trophy','infocube','notes','painting','shadow'].forEach(n=>img(n,'assets/ui/'+n+'.png'));
+['b_ok','b_undo','b_home','b_sound','b_next','board','bubble','tile','star','lock','rotate','screen','medal','bell','drum','rose','perfume','lemon','lollipop','hedgehog','teddy','rainbow','traffic','g_eye','g_ear','g_nose','g_mouth','g_hand','ch_text','ch_num','ch_sound','ch_pic','c_book','c_flash','c_disc','c_note','c_photo','n_apple','n_ball','n_sock','n_cup','n_carrot','monitor','sysunit','keyboard','mouse','speakers','printer','mic','scanner','webcam','joystick','headphones','projector','loco','wagon','sphere','h_get','h_store','h_send','h_proc','s_radio','s_telescope','s_album','s_diary','s_envelope','s_pigeon','s_puzzle','s_abacus','vacuum','pixels','trophy','infocube','notes','painting','shadow','plank','sign3','sign4'].forEach(n=>img(n,'assets/ui/'+n+'.png'));
 const FONT='FairyLogo, Georgia, serif',BODY='Pangolin, "Comic Sans MS", sans-serif',NUM='NunitoLogo, Arial Black, sans-serif';
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),rnd=(a,b)=>a+Math.random()*(b-a),ease=t=>t<0?0:t>1?1:1-Math.pow(1-t,3),lerp=(a,b,t)=>a+(b-a)*t;
 const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
@@ -145,8 +145,8 @@ function drawTalk(){const v=vis();const top=safeT();
   // внутренняя область облачка (без хвостика)
   const iw=bw*.84,ih=bh*.6,cy=top+bh*.4;const nm=NAMES[talk.who];if(nm)txt(nm,bx-bw*.36,top+bh*.05,30,'#fff',{f:FONT,al:'left',st:'#2a7a7a',lw:6,box:[bx-bw/2,top-30,bx+bw/2,top+bh],id:'name'});
   textIn(talk.text,bx,cy+6,iw,ih,46,'#2b2440',{f:BODY,st:0,id:'talk',min:44});talk.box=[bx-bw/2,top,bw,bh*.8];return}
- if(GOAL){const bw=Math.min(860,v.w*.62),bh=bw/aspect('board');const bx=SCN&&SCN.goalX?SCN.goalX():640;const top=SCN&&SCN.goalTop?SCN.goalTop(bh):safeT();X.save();sprW('board',bx,top+bh/2,bw);X.restore();
-  textIn(GOAL,bx,top+bh/2,bw*.84,bh*.56,46,'#4a2208',{f:BODY,st:'rgba(255,248,230,.8)',lw:4,id:'goal'})}}
+ if(GOAL){const bw=Math.min(840,v.w*.6),bh=bw/aspect('sign4');const bx=SCN&&SCN.goalX?SCN.goalX():640;const top=SCN&&SCN.goalTop?SCN.goalTop(bh):safeT();X.save();sprW('sign4',bx,top+bh/2,bw);X.restore();
+  textIn(GOAL,bx,top+bh/2,bw*.86,bh*.6,46,'#fff6dc',{f:FONT,st:'#3a1a06',lw:6,id:'goal'})}}
 // ---- сцены ----
 const SC={};let scene='load',SCN=null,ZS=null;
 function go(n,arg){GEN++;scene=n;SCN=SC[n];fade=1;stopTalk();PS.length=0;GOAL='';cast=[];ZS=null;SCN.enter&&SCN.enter(arg)}

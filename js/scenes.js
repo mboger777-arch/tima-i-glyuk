@@ -1,11 +1,11 @@
 'use strict';
 // ===== общие помощники, титул, вступление, карта, финал =====
-const ZONES=[{n:1,sc:'z1',name:'Город Чувств',pos:[205,505]},{n:2,sc:'z2',name:'Библиотека',pos:[200,215]},{n:3,sc:'z3',name:'Мастерская',pos:[560,545]},
- {n:4,sc:'z4',name:'Ввод и вывод',pos:[930,445]},{n:5,sc:'z5',name:'Город Памяти',pos:[640,165]}];
+const ZONES=[{n:1,sc:'z1',name:'Город Чувств',pos:[400,560]},{n:2,sc:'z2',name:'Библиотека',pos:[215,250]},{n:3,sc:'z3',name:'Мастерская',pos:[720,540]},
+ {n:4,sc:'z4',name:'Ввод и вывод',pos:[1000,420]},{n:5,sc:'z5',name:'Город Памяти',pos:[640,250]}];
 const FINPOS=[1065,150];
 // надпись на нарисованной табличке; текст всегда внутри
-function plaque(t,x,y,w,o){o=o||{};const h=w/aspect('board');X.save();X.translate(x,y);if(o.a!=null)X.globalAlpha=o.a;sprW('board',0,0,w);X.restore();
- textIn(t,x,y,w*.8,h*.58,o.size||44,o.col||'#fff6dc',{f:o.f||FONT,st:'#3a1a06',lw:6,id:o.id||'plaque',min:o.min||18});return h}
+function plaque(t,x,y,w,o){o=o||{};const sp=o.sp||'sign3';const h=w/aspect(sp);X.save();X.translate(x,y);if(o.a!=null)X.globalAlpha=o.a;sprW(sp,0,0,w);X.restore();
+ textIn(t,x,y,w*.84,h*.62,o.size||44,o.col||'#fff6dc',{f:o.f||FONT,st:'#3a1a06',lw:6,id:o.id||'plaque',min:o.min||18});return h}
 // ---- перетаскивание: тащить пальцем ИЛИ нажать на предмет, потом на цель ----
 // объект: {id,x,y,hx,hy,r (радиус касания), off(не трогается)}; цель: {id,x,y,w,h}
 const DRG={items:[],targets:[],drag:null,sel:null,onDrop:null};
@@ -61,7 +61,7 @@ SC.intro={enter(){cast=[hero('tima',0),hero('klik',0),hero('glyuk',0,{pose:'laug
  ui(){boardBtn('skip',safeR()-150,safeB()-50,260,'Дальше',()=>{SV.intro=1;save();go('map')},{size:44})}};
 // ---- карта: вся карта видна целиком; поля — размытый фон ----
 function mapRect(){const v=vis(),k=Math.min(v.w/1280,v.h/720);const w=1280*k,h=720*k;return{x:640-w/2,y:v.y0+v.h-h,k,w,h}}
-SC.map={bubble(bw){const w=Math.max(600,bw);return{x:safeL()+heroX(cast[0])+w/2-10,top:safeB()-215,w}},enter(){cast=[hero('tima',0,{h:340}),hero('klik',0,{h:190})];GOAL='';
+SC.map={enter(){cast=[hero('tima',0,{h:340}),hero('klik',0,{h:190})];GOAL='';
   run(async()=>{await wait(300);if(SV.stars.every(v=>!v))await say('m1');else if(SV.stars.every(v=>v)&&!SV.fin)await say('m_fin')})},
  draw(){const v=vis(),m=mapRect();const b=IM.bg_map;
   if(okI(b)){X.save();X.filter='blur(14px) brightness(.8)';const s=Math.max(v.w/1280,v.h/720)*1.1;X.drawImage(b,640-640*s,v.y0+v.h/2-360*s,1280*s,720*s);X.restore();X.drawImage(b,m.x,m.y,m.w,m.h)}
