@@ -149,7 +149,10 @@ function drawCast(){const v=vis();cast.forEach(c=>{if(c.hide){c.dx=null;return}c
 // якоря героев по краям видимой области
 const LEFT=k=>safeL()+(k||0),RIGHT=k=>safeR()-(k||0);
 // ---- облачко речи у говорящего героя; иначе — доска с заданием ----
-let GOAL='';
+let GOAL='';let DOTSN=0;
+// табличка задания и счётчик звёзд делят верхнюю полосу: звёзды — одним рядом справа, табличка сдвигается левее
+function dotR(n){const v=vis();return clamp((v.w-100-28-Math.min(780,v.w*.58)-30)/(Math.max(n,1)*2.3),16,26)}
+function goalRect(){const v=vis();const n=DOTSN,dw=n?n*dotR(n)*2.3+14:0;const L=safeL()+100,R=safeR()-dw-12;const bw=Math.min(780,v.w*.58,R-L),bh=bw/aspect('plank');return{bx:clamp(640,L+bw/2,R-bw/2),bw,bh,top:safeT()}}
 function talkerX(){if(!talk)return 640;const c=cast.find(c=>c.n===talk.who&&!c.hide);if(c)return c.dx;if(talk.who==='glyuk'&&CAMEO.on)return CAMEO.x;return null}
 // Глюк, которого нет на сцене, выглядывает из «глючного» окошка, пока говорит
 const CAMEO={on:0,a:0,x:0};
@@ -167,11 +170,11 @@ function drawTalk(){const v=vis();const top=safeT();
   // внутренняя область облачка (без хвостика)
   const iw=bw*.84,ih=bh*.6,cy=top+bh*.4;const nm=NAMES[talk.who];if(nm)txt(nm,bx-bw*.36,top+bh*.05,30,'#fff',{f:FONT,al:'left',st:'#2a7a7a',lw:6,box:[bx-bw/2,top-30,bx+bw/2,top+bh],id:'name'});
   textIn(talk.text,bx,cy+6,iw,ih,46,'#2b2440',{f:BODY,st:0,id:'talk',min:44});talk.box=[bx-bw/2,top,bw,bh*.8];return}
- if(GOAL){const bw=Math.min(780,v.w*.58),bh=bw/aspect('plank');const bx=SCN&&SCN.goalX?SCN.goalX():640;const top=SCN&&SCN.goalTop?SCN.goalTop(bh):safeT();X.save();sprW('plank',bx,top+bh/2,bw);X.restore();
+ if(GOAL){const gr=goalRect(),bw=gr.bw,bh=gr.bh;const bx=SCN&&SCN.goalX?SCN.goalX():gr.bx;const top=SCN&&SCN.goalTop?SCN.goalTop(bh):safeT();X.save();sprW('plank',bx,top+bh/2,bw);X.restore();
   textIn(GOAL,bx,top+bh/2,bw*.88,bh*.62,46,'#fff6dc',{f:FONT,st:'#3a1a06',lw:6,id:'goal'})}}
 // ---- сцены ----
 const SC={};let scene='load',SCN=null,ZS=null;
-function go(n,arg){GEN++;scene=n;SCN=SC[n];fade=1;stopTalk();PS.length=0;GOAL='';cast=[];ZS=null;SCN.enter&&SCN.enter(arg)}
+function go(n,arg){GEN++;DOTSN=0;scene=n;SCN=SC[n];fade=1;stopTalk();PS.length=0;GOAL='';cast=[];ZS=null;SCN.enter&&SCN.enter(arg)}
 // ввод блокируется только во время победной сцены (ZS.lock); голос не мешает играть
 function locked(){return!!(ZS&&ZS.lock)}
 G.locked=locked;let _lastTap={t:0,x:-99,y:-99};const PTR=new Map();

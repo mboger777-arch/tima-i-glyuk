@@ -10,7 +10,7 @@ const SIL={};function silh(n,col){const key=n+(col||'');if(SIL[key])return SIL[k
 const Z3BACK=['printer','speakers','monitor','sysunit','mic'];
 function z3slots(){const s=bgScale(),P=lineup(10);const PP=id=>Z3P.find(p=>p.id===id);const gap=22;
  const raw=Z3BACK.map(id=>PP(id).h*s*aspect(id));const need=raw.reduce((a,b)=>a+b,0)+gap*s*4;const k=Math.min(1,(P.x1-P.x0)/need);
- const v=vis(),gbw=Math.min(780,v.w*.58),gTop=safeT()+gbw/aspect('plank')+14;
+ const gr=goalRect(),gTop=gr.top+gr.bh+14;
  const kTop=Math.min(...Z3BACK.map(id=>{const p=PP(id),b=bgXY(0,p.b)[1];return (b-gTop)/(p.h*s)}));const k2=Math.min(k,kTop);
  const [tl]=bgXY(70,0),[tr]=bgXY(1215,0);const span=need*k2;let x=clamp(P.cx-span/2,tl,tr-span);const R={};
  Z3BACK.forEach((id,i)=>{const p=PP(id),h=p.h*s*k2,w=raw[i]*k2;const b=bgXY(0,p.b)[1];R[id]={id,x:x+w/2,y:b-h/2,w:Math.max(w,90),h:Math.max(h,90),b,sh:h,sw:w};x+=w+gap*s*k2});

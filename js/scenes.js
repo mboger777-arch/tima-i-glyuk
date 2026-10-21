@@ -55,9 +55,8 @@ async function winZone(line,gl){const z=ZS;z.lock=true;cheer();burst(640,300,90,
  const i=z.n-1;SV.stars[i]=1;SV.open=Math.max(SV.open,Math.min(6,z.n+1));save();z.won=1;
  await say(line);if(gl){z.glq=1;await say(gl)}await wait(500);z.done=true;z.lock=false;go('map')}
 // счётчик прогресса зоны: звёздочки-огоньки внизу справа
-function progDots(n,done){const v=vis();const gR=GOAL?640+Math.min(780,v.w*.58)/2+14:safeL()+110;const x1=safeR()-14,avail=x1-gR;
- let rows=1,per=n,r=Math.min(26,avail/(n*2.3));if(r<20&&n>4){rows=2;per=Math.ceil(n/2);r=Math.min(26,avail/(per*2.3))}r=Math.max(r,15);
- const px=i=>x1-(per-1-(i%per))*(r*2.3)-r,py=i=>safeT()+r+14+Math.floor(i/per)*(r*2.2);const y=safeT()+42;
+function progDots(n,done){DOTSN=n;const x1=safeR()-14,r=dotR(n),per=n;const gr=goalRect();
+ const px=i=>x1-(per-1-i)*(r*2.3)-r,py=i=>gr.top+gr.bh/2;
  for(let i=0;i<n;i++){const x=px(i),y=py(i);const pop=PDOT[i]&&T-PDOT[i]<.5?1+Math.sin((T-PDOT[i])/.5*Math.PI)*.45:1;X.save();X.globalAlpha=i<done?1:.35;spr('star',x,y,r*2.2*pop,{rot:i<done?Math.sin(T*2+i)*.1:0});X.restore()}
  for(let j=STF.length-1;j>=0;j--){const s=STF[j],u=clamp((T-s.t0)/(G.fast?.05:.7),0,1),e=ease(u);const i=Math.max(0,Math.min(n-1,done-1));const tx=px(i);
   const x=lerp(s.x,tx,e),yy=lerp(s.y,py(i),e)-Math.sin(u*Math.PI)*120;spr('star',x,yy,70*(1-u*.4),{rot:u*8});if(Math.random()<.5)burst(x,yy,1,'spark',50,.3);
