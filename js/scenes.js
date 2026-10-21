@@ -57,7 +57,8 @@ async function winZone(line,gl){const z=ZS;z.lock=true;cheer();burst(640,300,90,
 // счётчик прогресса зоны: звёздочки-огоньки внизу справа
 function progDots(n,done){DOTSN=n;const x1=safeR()-14,r=dotR(n),per=n;const gr=goalRect();
  const px=i=>x1-(per-1-i)*(r*2.3)-r,py=i=>gr.top+gr.bh/2;
- for(let i=0;i<n;i++){const x=px(i),y=py(i);const pop=PDOT[i]&&T-PDOT[i]<.5?1+Math.sin((T-PDOT[i])/.5*Math.PI)*.45:1;X.save();X.globalAlpha=i<done?1:.35;spr('star',x,y,r*2.2*pop,{rot:i<done?Math.sin(T*2+i)*.1:0});X.restore()}
+ {const xa=px(0)-r*1.25,xb=x1+r*.15,yc=py(0);X.save();X.fillStyle='rgba(20,14,44,.42)';X.beginPath();X.roundRect(xa,yc-r*1.25,xb-xa,r*2.5,r*1.25);X.fill();X.restore()}
+ for(let i=0;i<n;i++){const x=px(i),y=py(i);const pop=PDOT[i]&&T-PDOT[i]<.5?1+Math.sin((T-PDOT[i])/.5*Math.PI)*.45:1;X.save();X.globalAlpha=i<done?1:.45;spr('star',x,y,r*2.2*pop,{rot:i<done?Math.sin(T*2+i)*.1:0});X.restore()}
  for(let j=STF.length-1;j>=0;j--){const s=STF[j],u=clamp((T-s.t0)/(G.fast?.05:.7),0,1),e=ease(u);const i=Math.max(0,Math.min(n-1,done-1));const tx=px(i);
   const x=lerp(s.x,tx,e),yy=lerp(s.y,py(i),e)-Math.sin(u*Math.PI)*120;spr('star',x,yy,70*(1-u*.4),{rot:u*8});if(Math.random()<.5)burst(x,yy,1,'spark',50,.3);
   if(u>=1){STF.splice(j,1);PDOT[i]=T;SFX.coin()}}}
